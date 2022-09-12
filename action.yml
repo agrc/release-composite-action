@@ -78,7 +78,6 @@ runs:
         default-branch: ${{ github.ref_name }}
         release-as: ${{ steps.get-next-version.outputs.version }}
 
-
     - name: 🔑 Set Git User
       shell: bash
       run: |
@@ -109,7 +108,7 @@ runs:
 
     - name: 🙏 Enable PR Auto-merge
       uses: peter-evans/enable-pull-request-automerge@v2
-      if: ${{ steps.release-please.outputs.release_created != 'true' }}
+      if: ${{ steps.release-please.outputs.release_created }}
       with:
         token: ${{ inputs.repo-token }}
         pull-request-number: ${{ fromJSON(steps.release-please.outputs.pr).number }}
