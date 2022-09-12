@@ -50,7 +50,7 @@ runs:
 
     - name: ⏩ Get Next version
       id: get-next-version
-      uses: agrc/get-next-version-action
+      uses: agrc/get-next-version-action@v1
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
