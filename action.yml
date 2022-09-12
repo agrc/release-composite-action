@@ -1,0 +1,96 @@
+name: Release
+description: Automated releases via release-please
+inputs:
+  create-major-minor-tags:
+    description: Create major/minor tags automatically on release (e.g. v1, v1.1)
+    required: false
+    default: false
+  prerelease:
+    description: Create a pre-release (e.g. v1.0.0-0)
+    required: false
+    default: ${{ github.ref_name == 'dev' }}
+  repo-token:
+    description: GitHub token (e.g. secrets.GITHUB_TOKEN)
+    required: true
+  release-bot-app-id:
+    description: UGRC Release Bot App Id
+    required: false
+    default: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
+  release-bot-app-key:
+    description: UGRC Release Bot App Key
+    required: false
+    default: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
+  release-bot-name:
+    description: UGRC Release Bot Name
+    required: false
+    default: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
+  release-bot-email:
+    description: UGRC Release Bot Email
+    required: false
+    default: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
+outputs:
+  release_created:
+    description: A release was successfully created
+    value: ${{ steps.release-please.outputs.release_created }}
+  released_version:
+    description: The version number that was released
+    value: ${{ steps.get-next-version.outputs.version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 🪙 Convert token
+      uses: tibdex/github-app-token@v1
+      id: generate_token
+      with:
+        app_id: ${{ inputs.release-bot-app-id }}
+        private_key: ${{ inputs.release-bot-app-key }}
+
+    - name: ⬇️ Set up code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ steps.generate_token.outputs.token }}
+
+    - name: ⏩ Get Next version
+      id: get-next-version
+      uses: agrc/get-next-version-action
+      with:
+        prerelease: ${{ inputs.prerelease }}
+        repo-token: ${{ inputs.repo-token }}
+
+    - name: 🚀 Create release
+      uses: google-github-actions/release-please-action@v3
+      id: release-please
+      with:
+        token: ${{ steps.generate_token.outputs.token }}
+        release-type: node
+        pull-request-title-pattern: 'chore: release v${version}'
+        changelog-types: >
+          [{"type":"feat","section":"🚀 Features","hidden":false},
+          {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
+          {"type":"deps","section":"🌲 Dependencies","hidden":false},
+          {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
+          {"type":"style","section":"🎨 Design Improvements","hidden":false},
+          {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
+          {"type":"chore","section":"🧰 Maintenance","hidden":true}]
+        prerelease: ${{ inputs.prerelease }}
+        default-branch: ${{ github.ref_name }}
+        release-as: ${{ steps.get-next-version.outputs.version }}
+
+    - name: 🏷️ Tag major and minor versions
+      shell: bash
+      if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && !inputs.prerelease }}
+      run: |
+        git config user.name "${{ inputs.release-bot-name }}"
+        git config user.email "${{ inputs.release-bot-email }}"
+        echo "deleting existing tags, if any"
+        git tag -d v${{ steps.release-please.outputs.major }} || true
+        git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+        git push origin :v${{ steps.release-please.outputs.major }} || true
+        git push origin :v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+        echo "creating new tags"
+        git tag -a v${{ steps.release-please.outputs.major }} -m "Release v${{ steps.release-please.outputs.major }}"
+        git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
+        git push origin v${{ steps.release-please.outputs.major }}
+        git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
