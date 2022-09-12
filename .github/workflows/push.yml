@@ -21,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+
       - uses: ./
         with:
           create-major-minor-tags: true
