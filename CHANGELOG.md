@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/agrc/release-composite-action/compare/v1.0.1...v1.0.2) (2022-09-12)
+
+
+### 🐛 Bug Fixes
+
+* only enable auto merge on pull request ([635c6e7](https://github.com/agrc/release-composite-action/commit/635c6e70cfd4ce908f8779bb9faab92e2bcc43a7))
+
 ## [1.0.1](https://github.com/agrc/release-composite-action/compare/v1.0.0...v1.0.1) (2022-09-12)
 
 
