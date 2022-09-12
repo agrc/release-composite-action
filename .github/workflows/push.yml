@@ -32,6 +32,6 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           github-app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
           github-app-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
-          github-app-name: ${{ secrets.UGRC_RELEASE_NAME }}
-          github-app-email: ${{ secrets.UGRC_RELEASE_EMAIL }}
+          github-app-name: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
+          github-app-email: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
           release-type: simple
