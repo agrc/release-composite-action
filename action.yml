@@ -13,21 +13,17 @@ inputs:
     description: GitHub token (e.g. secrets.GITHUB_TOKEN)
     required: true
   release-bot-app-id:
-    description: UGRC Release Bot App Id
-    required: false
-    default: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
+    description: UGRC Release Bot App Id (e.g. secrets.UGRC_RELEASE_BOT_APP_ID)
+    required: true
   release-bot-app-key:
-    description: UGRC Release Bot App Key
-    required: false
-    default: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
+    description: UGRC Release Bot App Key (e.g. secrets.UGRC_RELEASE_BOT_APP_KEY)
+    required: true
   release-bot-name:
-    description: UGRC Release Bot Name
-    required: false
-    default: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
+    description: UGRC Release Bot Name (e.g. secrets.UGRC_RELEASE_BOT_NAME)
+    required: true
   release-bot-email:
-    description: UGRC Release Bot Email
-    required: false
-    default: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
+    description: UGRC Release Bot Email (e.g. secrets.UGRC_RELEASE_BOT_EMAIL)
+    required: true
 outputs:
   release_created:
     description: A release was successfully created
