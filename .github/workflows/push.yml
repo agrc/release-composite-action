@@ -24,7 +24,8 @@ jobs:
       - name: ⬇️ Set up code
         uses: actions/checkout@v3
 
-      - uses: ./
+      - name: 🚀 Create Release
+        uses: ./
         with:
           create-major-minor-tags: true
           prerelease: ${{ github.ref_name == 'dev' }}
