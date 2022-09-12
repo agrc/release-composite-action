@@ -12,17 +12,17 @@ inputs:
   repo-token:
     description: GitHub token (e.g. secrets.GITHUB_TOKEN)
     required: true
-  release-bot-app-id:
-    description: UGRC Release Bot App Id (e.g. secrets.UGRC_RELEASE_BOT_APP_ID)
+  github-app-id:
+    description: Installed GitHub App Id (e.g. secrets.UGRC_RELEASE_BOT_APP_ID)
     required: true
-  release-bot-app-key:
-    description: UGRC Release Bot App Key (e.g. secrets.UGRC_RELEASE_BOT_APP_KEY)
+  github-app-key:
+    description: Installed GitHub App Key (e.g. secrets.UGRC_RELEASE_BOT_APP_KEY)
     required: true
-  release-bot-name:
-    description: UGRC Release Bot Name (e.g. secrets.UGRC_RELEASE_BOT_NAME)
+  github-app-name:
+    description: Installed GitHub Name (e.g. secrets.UGRC_RELEASE_BOT_NAME)
     required: true
-  release-bot-email:
-    description: UGRC Release Bot Email (e.g. secrets.UGRC_RELEASE_BOT_EMAIL)
+  github-app-email:
+    description: Installed GitHub Email (e.g. secrets.UGRC_RELEASE_BOT_EMAIL)
     required: true
 outputs:
   release_created:
@@ -39,8 +39,8 @@ runs:
       uses: tibdex/github-app-token@v1
       id: generate_token
       with:
-        app_id: ${{ inputs.release-bot-app-id }}
-        private_key: ${{ inputs.release-bot-app-key }}
+        app_id: ${{ inputs.github-app-id }}
+        private_key: ${{ inputs.github-app-key }}
 
     - name: ⬇️ Set up code
       uses: actions/checkout@v3
@@ -84,8 +84,8 @@ runs:
     - name: 🔑 Set Git User
       shell: bash
       run: |
-        git config user.name "${{ inputs.release-bot-name }}"
-        git config user.email "${{ inputs.release-bot-email }}"
+        git config user.name "${{ inputs.github-app-name }}"
+        git config user.email "${{ inputs.github-app-email }}"
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
