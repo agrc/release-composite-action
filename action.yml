@@ -81,12 +81,16 @@ runs:
         token: ${{ inputs.repo-token }}
         pull-request-number: ${{ fromJSON(steps.release-please.outputs.pr).number }}
 
+    - name: 🔑 Set Git User
+      shell: bash
+      run: |
+        git config user.name "${{ inputs.release-bot-name }}"
+        git config user.email "${{ inputs.release-bot-email }}"
+
     - name: 🏷️ Tag major and minor versions
       shell: bash
       if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && !inputs.prerelease }}
       run: |
-        git config user.name "${{ inputs.release-bot-name }}"
-        git config user.email "${{ inputs.release-bot-email }}"
         echo "deleting existing tags, if any"
         git tag -d v${{ steps.release-please.outputs.major }} || true
         git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
@@ -97,3 +101,10 @@ runs:
         git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
         git push origin v${{ steps.release-please.outputs.major }}
         git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
+
+    - name: 🔄 Rebase
+      shell: bash
+      if: ${{ github.ref == 'main' && steps.release-please.outputs.release_created }}
+      run: |
+        git rebase main dev
+        git push
