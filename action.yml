@@ -24,6 +24,10 @@ inputs:
   github-app-email:
     description: Installed GitHub Email (e.g. secrets.UGRC_RELEASE_BOT_EMAIL)
     required: true
+  release-type:
+    description: Release Please release type
+    required: false
+    default: node
 outputs:
   release_created:
     description: A release was successfully created
@@ -60,7 +64,7 @@ runs:
       id: release-please
       with:
         token: ${{ steps.generate_token.outputs.token }}
-        release-type: node
+        release-type: ${{ inputs.release-type }}
         pull-request-title-pattern: 'chore: release v${version}'
         changelog-types: >
           [{"type":"feat","section":"🚀 Features","hidden":false},
