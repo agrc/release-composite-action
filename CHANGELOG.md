@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/agrc/release-composite-action/compare/v1.0.2...v1.0.3) (2022-09-13)
+
+
+### 🐛 Bug Fixes
+
+* remove step that can only run on pull_request trigger ([9fb9cd1](https://github.com/agrc/release-composite-action/commit/9fb9cd167de67eb91c038631cfa2ac7592cae34a))
+
 ## [1.0.2](https://github.com/agrc/release-composite-action/compare/v1.0.1...v1.0.2) (2022-09-12)
 
 
