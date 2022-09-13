@@ -4,7 +4,7 @@ inputs:
   create-major-minor-tags:
     description: Create major/minor tags automatically on release (e.g. v1, v1.1)
     required: false
-    default: false
+    default: 'false'
   prerelease:
     description: Create a pre-release (e.g. v1.0.0-0)
     required: false
@@ -86,7 +86,7 @@ runs:
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
-      if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && !inputs.prerelease }}
+      if: ${{ inputs.create-major-minor-tags == 'true' && steps.release-please.outputs.release_created == 'true' && inputs.prerelease != 'true' }}
       run: |
         echo "deleting existing tags, if any"
         git tag -d v${{ steps.release-please.outputs.major }} || true
