@@ -1,5 +1,7 @@
 # release-composite-action
 
+[![Push Events](https://github.com/agrc/release-composite-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/release-composite-action/actions/workflows/push.yml)
+
 Automated releases
 
 ## Usage
