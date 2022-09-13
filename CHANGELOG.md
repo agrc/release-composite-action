@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.4](https://github.com/agrc/release-composite-action/compare/v1.0.3...v1.0.4) (2022-09-13)
+
+
+### 🐛 Bug Fixes
+
+* correct context property name ([189be88](https://github.com/agrc/release-composite-action/commit/189be88a868e2ba402be5aff1aa26f78d093f176))
+* correct git commands ([ba0002b](https://github.com/agrc/release-composite-action/commit/ba0002ba00b2e7f85e7dfa67433d8edc675a04d0))
+* remove auto merge ([d359994](https://github.com/agrc/release-composite-action/commit/d359994dc513329b3ae865736deb7dbbd2792709))
+
 ## [1.0.3](https://github.com/agrc/release-composite-action/compare/v1.0.2...v1.0.3) (2022-09-13)
 
 
