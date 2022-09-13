@@ -105,5 +105,5 @@ runs:
       run: |
         git checkout -b dev || true
         git checkout dev
-        git rebase main --onto dev
+        git rebase main
         git push --set-upstream origin dev
