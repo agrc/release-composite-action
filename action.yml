@@ -103,5 +103,5 @@ runs:
       shell: bash
       if: ${{ github.ref_name == 'main' && steps.release-please.outputs.release_created }}
       run: |
-        git rebase main dev
-        git push
+        git rebase main origin/dev
+        git push --set-upstream origin dev
