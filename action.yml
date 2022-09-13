@@ -101,7 +101,7 @@ runs:
 
     - name: 🔄 Rebase
       shell: bash
-      if: ${{ github.ref == 'main' && steps.release-please.outputs.release_created }}
+      if: ${{ github.ref_name == 'main' && steps.release-please.outputs.release_created }}
       run: |
         git rebase main dev
         git push
