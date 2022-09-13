@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.7](https://github.com/agrc/release-composite-action/compare/v1.0.6...v1.0.7) (2022-09-13)
+
+
+### 🐛 Bug Fixes
+
+* try to fix git commands ([a26a449](https://github.com/agrc/release-composite-action/commit/a26a449590a5fa55804a4dacd803d65a4d988628))
+
+
+### 📖 Documentation Improvements
+
+* add status badge ([2a9a767](https://github.com/agrc/release-composite-action/commit/2a9a767271f73150c55d4fee758359a0cd5e7b28))
+* correct example ([2d0f6d9](https://github.com/agrc/release-composite-action/commit/2d0f6d916fedd8c5373bc6f542f459679a8fb41e))
+
 ## [1.0.7-0](https://github.com/agrc/release-composite-action/compare/v1.0.6...v1.0.7-0) (2022-09-13)
 
 
