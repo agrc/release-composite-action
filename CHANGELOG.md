@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/agrc/release-composite-action/compare/v1.0.5...v1.0.6) (2022-09-13)
+
+
+### 🐛 Bug Fixes
+
+* correct if branch to create tags ([5ebb61a](https://github.com/agrc/release-composite-action/commit/5ebb61a4b29591103259a1648c0a2f3c55181d06))
+
 ## [1.0.5](https://github.com/agrc/release-composite-action/compare/v1.0.4...v1.0.5) (2022-09-13)
 
 
