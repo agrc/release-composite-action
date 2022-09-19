@@ -28,6 +28,22 @@ inputs:
     description: Release Please release type
     required: false
     default: node
+  service-now-instance:
+    description: the sub address to https://{SN_INSTANCE}.service-now.com
+    required: false
+    default: utah
+  service-now-table:
+    description: the parent table to write to
+    required: false
+  service-now-system-id:
+    description: the child table to write to
+    required: false
+  service-now-username:
+    description: the service account name
+    required: false
+  service-now-password:
+    description: the service account password
+    required: false
 outputs:
   release_created:
     description: A release was successfully created
@@ -107,3 +123,11 @@ runs:
         git checkout dev
         git rebase main
         git push --set-upstream origin dev
+
+    - name: 🔔 Create deployment notification
+      uses: agrc/service-now-worknote-action@v1
+      if: ${{ inputs.service-now-system-id != '' }}
+      with:
+        system-id: ${{ inputs.service-now-system_id }
+        username: ${{ inputs.service-now-username }}
+        password: ${{ inputs.service-now-password }}
