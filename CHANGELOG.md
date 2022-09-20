@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.0](https://github.com/agrc/release-composite-action/compare/v1.0.7...v1.1.0) (2022-09-20)
+
+
+### 📖 Documentation Improvements
+
+* add service now secrets to the example ([11378bd](https://github.com/agrc/release-composite-action/commit/11378bded0168101866169369a4cb4350c36a67a))
+
+
+### 🚀 Features
+
+* add service now deployment notification job step ([6420543](https://github.com/agrc/release-composite-action/commit/6420543d9f1cb1f81070a7a0a66f171f0549a52b))
+
+
+### 🐛 Bug Fixes
+
+* add missing } ([768ed15](https://github.com/agrc/release-composite-action/commit/768ed1549026a1a7597ab6e3b5b443c1135fd5e6))
+
 ## [1.0.7](https://github.com/agrc/release-composite-action/compare/v1.0.6...v1.0.7) (2022-09-13)
 
 
