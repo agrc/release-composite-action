@@ -128,6 +128,6 @@ runs:
       uses: agrc/service-now-worknote-action@v1
       if: ${{ inputs.service-now-system-id != '' }}
       with:
-        system-id: ${{ inputs.service-now-system_id }
+        system-id: ${{ inputs.service-now-system_id }}
         username: ${{ inputs.service-now-username }}
         password: ${{ inputs.service-now-password }}
