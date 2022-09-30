@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/agrc/release-composite-action/compare/v1.1.0...v1.1.1) (2022-09-30)
+
+
+### 📖 Documentation Improvements
+
+* point at v1 ([e7afd71](https://github.com/agrc/release-composite-action/commit/e7afd71a88e54812d56bdc17a1b4ace1e2bc8c04))
+
 ## [1.1.0](https://github.com/agrc/release-composite-action/compare/v1.0.7...v1.1.0) (2022-09-20)
 
 
