@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2-0](https://github.com/agrc/release-composite-action/compare/v1.1.1...v1.1.2-0) (2022-09-30)
+
+
+### 🐛 Bug Fixes
+
+* pass all required params to service now action ([a48252c](https://github.com/agrc/release-composite-action/commit/a48252c94a730dd280b69eb505926b612486ca0c))
+
 ## [1.1.1](https://github.com/agrc/release-composite-action/compare/v1.1.0...v1.1.1) (2022-09-30)
 
 
