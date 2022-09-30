@@ -31,7 +31,6 @@ inputs:
   service-now-instance:
     description: the sub address to https://{SN_INSTANCE}.service-now.com
     required: false
-    default: utah
   service-now-table:
     description: the parent table to write to
     required: false
@@ -128,6 +127,9 @@ runs:
       uses: agrc/service-now-worknote-action@v1
       if: ${{ inputs.service-now-system-id != '' }}
       with:
-        system-id: ${{ inputs.service-now-system_id }}
+        repo-token: ${{ inputs.repo-token }}
         username: ${{ inputs.service-now-username }}
         password: ${{ inputs.service-now-password }}
+        instance-name: ${{ inputs.service-now-instance }}
+        table-name: ${{ inputs.service-now-table }}
+        system-id: ${{ inputs.service-now-system-id }}
