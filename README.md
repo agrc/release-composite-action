@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: agrc/release-composite-action@dev
+      - uses: agrc/release-composite-action@v1
         with:
           create-major-minor-tags: true
           prerelease: ${{ github.ref_name == 'dev' }}
