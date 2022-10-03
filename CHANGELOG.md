@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/agrc/release-composite-action/compare/v1.1.3...v1.1.4) (2022-10-03)
+
+
+### 🐛 Bug Fixes
+
+* explicitily set upstream branch ([88b7f33](https://github.com/agrc/release-composite-action/commit/88b7f33dd8cc8b55811b7ff82ec4ecbc00ab78a7))
+
 ## [1.1.3](https://github.com/agrc/release-composite-action/compare/v1.1.2...v1.1.3) (2022-10-03)
 
 
