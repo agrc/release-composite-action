@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/agrc/release-composite-action/compare/v1.1.2...v1.1.3) (2022-10-03)
+
+
+### 🐛 Bug Fixes
+
+* remove service now step ([0eabf70](https://github.com/agrc/release-composite-action/commit/0eabf708f4228e6cd008e52fbb7a1ff5d62b5c71))
+
 ## [1.1.2](https://github.com/agrc/release-composite-action/compare/v1.1.1...v1.1.2) (2022-10-03)
 
 
