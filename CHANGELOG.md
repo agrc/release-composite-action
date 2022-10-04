@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.5](https://github.com/agrc/release-composite-action/compare/v1.1.4...v1.1.5) (2022-10-04)
+
+
+### 📖 Documentation Improvements
+
+* add link to angular commit standard ([aeadd69](https://github.com/agrc/release-composite-action/commit/aeadd695932d82841c6a4879d8cb8395e4092742))
+
+
+### 🐛 Bug Fixes
+
+* fix rebase commands for bringing dev back up to date ([e829a60](https://github.com/agrc/release-composite-action/commit/e829a606de079ef6d6d9c0fe8751a2687bbafacf))
+
 ## [1.1.4](https://github.com/agrc/release-composite-action/compare/v1.1.3...v1.1.4) (2022-10-03)
 
 
