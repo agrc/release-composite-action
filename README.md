@@ -1,8 +1,8 @@
-# release-composite-action
+# Release Composite Action
 
 [![Push Events](https://github.com/agrc/release-composite-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/release-composite-action/actions/workflows/push.yml)
 
-Automated releases
+Automated releases based on the [Angular preset for Conventional Commits](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
 
 ## Usage
 
