@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.6](https://github.com/agrc/release-composite-action/compare/v1.1.5...v1.1.6) (2022-10-04)
+
+
+### 🐛 Bug Fixes
+
+* add some prunes ([c9d7543](https://github.com/agrc/release-composite-action/commit/c9d7543d8672bc8c62f92df921be6d45a6bc9cdc))
+* pull again ([77a1c9c](https://github.com/agrc/release-composite-action/commit/77a1c9c5750e37c1b714788d0b5e9c2a354f2135))
+
 ## [1.1.5](https://github.com/agrc/release-composite-action/compare/v1.1.4...v1.1.5) (2022-10-04)
 
 
