@@ -98,14 +98,3 @@ runs:
         git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
         git push origin v${{ steps.release-please.outputs.major }}
         git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
-
-    - name: 🔄 Rebase
-      shell: bash
-      if: ${{ github.ref_name == 'main' && steps.release-please.outputs.release_created }}
-      run: |
-        git checkout -b dev --track origin/dev || true # succeeds if there is an existing remote dev branch
-        git checkout -b dev || true # succeeds if there is no remote dev branch
-        git pull --rebase --prune || true
-        git rebase main
-        git pull --rebase --prune || true
-        git push -u origin dev
