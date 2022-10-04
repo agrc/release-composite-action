@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.7](https://github.com/agrc/release-composite-action/compare/v1.1.6...v1.1.7) (2022-10-04)
+
+
+### 🐛 Bug Fixes
+
+* remove git stuff because we're not smart enough to use it ([6cd8715](https://github.com/agrc/release-composite-action/commit/6cd87158f922b8a0b6d789bdedacf6e4bca27e99))
+
 ## [1.1.6](https://github.com/agrc/release-composite-action/compare/v1.1.5...v1.1.6) (2022-10-04)
 
 
