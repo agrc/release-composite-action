@@ -107,4 +107,5 @@ runs:
         git checkout -b dev || true # succeeds if there is no remote dev branch
         git pull --rebase || true
         git rebase main
+        git pull --rebase || true
         git push -u origin dev
