@@ -28,6 +28,9 @@ inputs:
     description: Release Please release type
     required: false
     default: node
+  path:
+    description: create a release from a path other than the repository's root
+    required: false
 outputs:
   release_created:
     description: A release was successfully created
@@ -77,6 +80,7 @@ runs:
         prerelease: ${{ inputs.prerelease }}
         default-branch: ${{ github.ref_name }}
         release-as: ${{ steps.get-next-version.outputs.version }}
+        path: ${{ inputs.path }}
 
     - name: 🔑 Set Git User
       shell: bash
