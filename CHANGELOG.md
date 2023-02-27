@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0-0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0-0) (2023-02-27)
+
+
+### 🚀 Features
+
+* add extra-files parameter ([fa95ed1](https://github.com/agrc/release-composite-action/commit/fa95ed1fab890cf63d27c7c7d018de40aa0fcdb9))
+
 ## [1.1.7](https://github.com/agrc/release-composite-action/compare/v1.1.6...v1.1.7) (2022-10-04)
 
 
