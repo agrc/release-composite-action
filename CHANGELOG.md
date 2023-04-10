@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0-0) (2023-04-10)
+
+
+### 🚀 Features
+
+* add `release_branch` output ([d9e4961](https://github.com/agrc/release-composite-action/commit/d9e4961bab9e274e7182d0d4508f5d84f5670aeb))
+
+
+### 🐛 Bug Fixes
+
+* handle empty output pr value ([f78ede9](https://github.com/agrc/release-composite-action/commit/f78ede9edf21633750d15a8412d76c26b3675ef2))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
