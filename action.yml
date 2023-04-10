@@ -38,6 +38,9 @@ outputs:
   released_version:
     description: The version number that was released
     value: ${{ steps.get-next-version.outputs.version }}
+  release_branch:
+    description: The head branch of the PR that was created by release please
+    value: ${{ fromJSON(steps.release-please.outputs.pr).headBranchName }}
 
 runs:
   using: 'composite'
