@@ -35,6 +35,10 @@ inputs:
     description: Use monorepo tags
     required: false
     default: false
+  working-directory:
+    description: the location of your package.json or whatever
+    required: false
+    default: '.'
 outputs:
   release_created:
     description: A release was successfully created
@@ -59,6 +63,10 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
+    - name: 🔀 Set directory
+      run: cd ${{ inputs.working-directory }}
+      shell: bash
+      
     - name: ⏩ Get Next version
       id: get-next-version
       uses: agrc/get-next-version-action@v1
