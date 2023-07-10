@@ -31,6 +31,10 @@ inputs:
   extra-files:
     description: Extra files in which release please should bump the version
     required: false
+  monorepo:
+    description: Use monorepo tags
+    required: false
+    default: false
 outputs:
   release_created:
     description: A release was successfully created
@@ -81,6 +85,7 @@ runs:
         default-branch: ${{ github.ref_name }}
         release-as: ${{ steps.get-next-version.outputs.version }}
         extra-files: ${{ inputs.extra-files }}
+        monorepo-tags: ${{ inputs.monorepo }}
 
     - name: 🔑 Set Git User
       shell: bash
