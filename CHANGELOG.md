@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0-0) (2023-07-10)
+
+
+### 🚀 Features
+
+* add working directory input ([4e45749](https://github.com/agrc/release-composite-action/commit/4e45749b99c64a3016a8a20d7101e5164b578e13))
+* enable monorepo tags in release please ([640185e](https://github.com/agrc/release-composite-action/commit/640185e3b75db1fad920f6278adb6e1a6da21f50))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
