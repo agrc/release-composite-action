@@ -4,7 +4,7 @@ inputs:
   create-major-minor-tags:
     description: Create major/minor tags automatically on release (e.g. v1, v1.1)
     required: false
-    default: 'false'
+    default: "false"
   prerelease:
     description: Create a pre-release (e.g. v1.0.0-0)
     required: false
@@ -40,14 +40,14 @@ outputs:
     value: ${{ steps.get-next-version.outputs.version }}
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: 🪙 Convert token
-      uses: tibdex/github-app-token@v2
+      uses: actions/create-github-app-token@v1
       id: generate_token
       with:
-        app_id: ${{ inputs.github-app-id }}
-        private_key: ${{ inputs.github-app-key }}
+        app-id: ${{ inputs.github-app-id }}
+        private-key: ${{ inputs.github-app-key }}
 
     - name: ⬇️ Set up code
       uses: actions/checkout@v4
@@ -69,7 +69,7 @@ runs:
       with:
         token: ${{ steps.generate_token.outputs.token }}
         release-type: ${{ inputs.release-type }}
-        pull-request-title-pattern: 'chore: release v${version}'
+        pull-request-title-pattern: "chore: release v${version}"
         changelog-types: >
           [{"type":"feat","section":"🚀 Features","hidden":false},
           {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
