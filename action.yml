@@ -58,10 +58,30 @@ runs:
 
     - name: ⏩ Get next version
       id: get-next-version
-      uses: agrc/get-next-version-action@v1
+      uses: agrc/get-next-version-action@dev
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
+
+    - name: Check if config files exist
+      id: files-exist
+      shell: bash
+      run: |
+        if [ -f .release-please-manifest.json ]; then
+          echo "manifest file exists"
+          echo "HAS_MANIFEST=1" >> "$GITHUB_OUTPUT"
+        else
+          echo "manifest does not exist"
+          echo "HAS_MANIFEST=0" >> "$GITHUB_OUTPUT"
+        fi
+
+        if [ -f release-please-config.json ]; then
+          echo "config file exists"
+          echo "HAS_CONFIG=1" >> "$GITHUB_OUTPUT"
+        else
+          echo "config does not exist"
+          echo "HAS_CONFIG=0" >> "$GITHUB_OUTPUT"
+        fi
 
     - name: 👇 Ensure config files exists
       shell: bash
@@ -69,7 +89,17 @@ runs:
         touch release-please-config.json
         touch .release-please-manifest.json
 
-    - name: 🔀 Create and merge Release Please config file
+    - name: 🥾 Bootstrap default Release Please manifest file
+      if: ${{ !steps.files-exist.outputs.HAS_MANIFEST && steps.get-next-version.outputs.current-version != null }}
+      uses: RadovanPelka/github-action-json@main
+      with:
+        path: .release-please-manifest.json
+        replaceWith: |
+          {
+            ".": "${{ steps.get-next-version.outputs.current-version }}"
+          }
+
+    - name: 🔀 Update/merge Release Please config file
       uses: RadovanPelka/github-action-json@main
       with:
         path: release-please-config.json
@@ -87,8 +117,31 @@ runs:
             ],
             "prerelease": ${{ inputs.prerelease }},
             "release-as": "${{ steps.get-next-version.outputs.version }}",
-            "release-type": "${{ inputs.release-type }}"
+            "release-type": "${{ inputs.release-type }}",
+            "packages": {
+              ".": {}
+            }
           }
+
+    - name: 🔑 Set git user
+      shell: bash
+      run: |
+        git config user.name "${{ inputs.github-app-name }}"
+        git config user.email "${{ inputs.github-app-email }}"
+
+    - name: Create Pull Request
+      id: create-pull-request
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ steps.generate_token.outputs.token }}
+        commit-message: "ci: configure release please files"
+        title: "Update Release Please configuration"
+        body: Created via agrc/release-composite-action
+
+    - name: Exit early
+      if: steps.create-pull-request.outputs.pull-request-number
+      shell: bash
+      run: exit 78
 
     - name: 🚀 Create release
       uses: google-github-actions/release-please-action@v4
@@ -99,15 +152,9 @@ runs:
         manifest-file: .release-please-manifest.json
         target-branch: ${{ github.ref_name }}
 
-    - name: 🔑 Set git user
-      shell: bash
-      run: |
-        git config user.name "${{ inputs.github-app-name }}"
-        git config user.email "${{ inputs.github-app-email }}"
-
     - name: 🏷️ Tag major and minor versions
       shell: bash
-      if: ${{ inputs.create-major-minor-tags == 'true' && steps.release-please.outputs.release_created == 'true' && inputs.prerelease != 'true' }}
+      if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && !inputs.prerelease }}
       run: |
         echo "deleting existing tags, if any"
         git tag -d v${{ steps.release-please.outputs.major }} || true
