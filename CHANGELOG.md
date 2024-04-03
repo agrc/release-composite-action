@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0) (2024-04-03)
+
+
+### Features
+
+* temp change of bug hello ([c873cca](https://github.com/agrc/release-composite-action/commit/c873ccad3d72d8dfa4d273b243d525e576a71604))
+
+
+### Bug Fixes
+
+* create manifest file ([6b59388](https://github.com/agrc/release-composite-action/commit/6b59388da94c28b11cedcd0b4fcb1c22828cc9d0))
+* ensure config file exists ([8cb600a](https://github.com/agrc/release-composite-action/commit/8cb600abfb09b6f5ebcc77d8fc3d677ab0989368))
+* fix changelog sections config name ([b63246e](https://github.com/agrc/release-composite-action/commit/b63246e64620ad073d07ed50ffa4432aa6af0191))
+* json syntax ([0a285d8](https://github.com/agrc/release-composite-action/commit/0a285d84ee1dad30bfafc337b5ca3eb3ba5f8716))
+* upgrade to release please v4 config file requirements ([075e657](https://github.com/agrc/release-composite-action/commit/075e65779ed59d2cb5285ad10014c724036b977e))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
