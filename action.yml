@@ -56,34 +56,93 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
-    - name: ⏩ Get Next version
+    - name: ⏩ Get next version
       id: get-next-version
       uses: agrc/get-next-version-action@v1
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
 
+    - name: 🔍 Check if config files exist
+      id: files-exist
+      shell: bash
+      run: |
+        if [ -f .release-please-manifest.json ]; then
+          echo "manifest file exists"
+          echo "HAS_MANIFEST=yes" >> "$GITHUB_OUTPUT"
+        else
+          echo "manifest does not exist"
+          echo "HAS_MANIFEST=no" >> "$GITHUB_OUTPUT"
+        fi
+
+        if [ -f release-please-config.json ]; then
+          echo "config file exists"
+          echo "HAS_CONFIG=yes" >> "$GITHUB_OUTPUT"
+        else
+          echo "config does not exist"
+          echo "HAS_CONFIG=no" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: 👇 Ensure config files exists
+      shell: bash
+      run: |
+        touch release-please-config.json
+        touch .release-please-manifest.json
+
+    - name: 🥾 Bootstrap default Release Please manifest file
+      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-next-version.outputs.current-version-number != null }}
+      uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
+      with:
+        path: .release-please-manifest.json
+        replaceWith: |
+          {
+            ".": "${{ steps.get-next-version.outputs.current-version-number }}"
+          }
+
+    - name: 🔀 Update/merge Release Please config file
+      uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
+      with:
+        path: release-please-config.json
+        replaceWith: |
+          {
+            "pull-request-title-pattern": "chore: release v${version}",
+            "changelog-sections": [
+              {"type":"feat","section":"🚀 Features","hidden":false},
+              {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
+              {"type":"deps","section":"🌲 Dependencies","hidden":false},
+              {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
+              {"type":"style","section":"🎨 Design Improvements","hidden":false},
+              {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
+              {"type":"chore","section":"🧰 Maintenance","hidden":true}
+            ],
+            "prerelease": ${{ inputs.prerelease }},
+            "release-as": "${{ steps.get-next-version.outputs.version }}",
+            "release-type": "${{ inputs.release-type }}",
+            "packages": {
+              ".": {}
+            }
+          }
+
+    - name: ✔ Commit
+      shell: bash
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add .release-please-manifest.json
+        git add release-please-config.json
+        git diff --staged --quiet || git commit -m "chore: configure release please [skip ci]"
+        git push
+
     - name: 🚀 Create release
       uses: google-github-actions/release-please-action@v4
       id: release-please
       with:
         token: ${{ steps.generate_token.outputs.token }}
-        release-type: ${{ inputs.release-type }}
-        pull-request-title-pattern: "chore: release v${version}"
-        changelog-types: >
-          [{"type":"feat","section":"🚀 Features","hidden":false},
-          {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
-          {"type":"deps","section":"🌲 Dependencies","hidden":false},
-          {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
-          {"type":"style","section":"🎨 Design Improvements","hidden":false},
-          {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
-          {"type":"chore","section":"🧰 Maintenance","hidden":true}]
-        prerelease: ${{ inputs.prerelease }}
-        default-branch: ${{ github.ref_name }}
-        release-as: ${{ steps.get-next-version.outputs.version }}
-        extra-files: ${{ inputs.extra-files }}
+        config-file: release-please-config.json
+        manifest-file: .release-please-manifest.json
+        target-branch: ${{ github.ref_name }}
 
-    - name: 🔑 Set Git User
+    - name: 🔑 Set git user
       shell: bash
       run: |
         git config user.name "${{ inputs.github-app-name }}"
