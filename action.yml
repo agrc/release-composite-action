@@ -67,12 +67,7 @@ runs:
       shell: bash
       run: |
         touch release-please-config.json
-        if [ -f .release-please-manifest.json ]; then
-          echo "manifest file already exists"
-        else
-          echo "creating empty manifest file"
-          echo "{}" > .release-please-manifest.json
-        fi
+        touch .release-please-manifest.json
 
     - name: 🔀 Create and merge Release Please config file
       uses: RadovanPelka/github-action-json@main
