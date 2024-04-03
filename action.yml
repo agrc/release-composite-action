@@ -83,7 +83,7 @@ runs:
             "pull-request-title-pattern": "chore: release v${version}",
             "changelog-sections": [
               {"type":"feat","section":"🚀 Features","hidden":false},
-              {"type":"fix","section":"Bug Hello","hidden":false},
+              {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
               {"type":"deps","section":"🌲 Dependencies","hidden":false},
               {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
               {"type":"style","section":"🎨 Design Improvements","hidden":false},
@@ -92,7 +92,7 @@ runs:
             ],
             "prerelease": ${{ inputs.prerelease }},
             "release-as": "${{ steps.get-next-version.outputs.version }}",
-            "extra-files": ["${{ inputs.extra-files }}"]
+            "release-type": "${{ inputs.release-type }}"
           }
 
     - name: 🚀 Create release
@@ -100,9 +100,7 @@ runs:
       id: release-please
       with:
         token: ${{ steps.generate_token.outputs.token }}
-        release-type: ${{ inputs.release-type }}
         config-file: release-please-config.json
-        manifest-file: .release-please-manifest.json
         target-branch: ${{ github.ref_name }}
 
     - name: 🔑 Set git user
