@@ -63,9 +63,16 @@ runs:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
 
-    - name: 👇 Ensure config file exists
+    - name: 👇 Ensure config files exists
       shell: bash
-      run: touch release-please-config.json
+      run: |
+        touch release-please-config.json
+        if [ -f .release-please-manifest.json ]; then
+          echo "manifest file already exists"
+        else
+          echo "creating empty manifest file"
+          echo "{}" > .release-please-manifest.json
+        fi
 
     - name: 🔀 Create and merge Release Please config file
       uses: RadovanPelka/github-action-json@main
@@ -95,6 +102,7 @@ runs:
         token: ${{ steps.generate_token.outputs.token }}
         release-type: ${{ inputs.release-type }}
         config-file: release-please-config.json
+        manifest-file: .release-please-manifest.json
         target-branch: ${{ github.ref_name }}
 
     - name: 🔑 Set git user
