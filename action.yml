@@ -63,25 +63,35 @@ runs:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
 
+    - name: 🔀 Create and Merge Release Please config file
+      uses: RadovanPelka/github-action-json@main
+      with:
+        path: release-please-config.json
+        replaceWith: |
+          {
+            "pull-request-title-pattern": "chore: release v${version}",
+            "changelog-types": [
+              {"type":"feat","section":"🚀 Features","hidden":false},
+              {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
+              {"type":"deps","section":"🌲 Dependencies","hidden":false},
+              {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
+              {"type":"style","section":"🎨 Design Improvements","hidden":false},
+              {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
+              {"type":"chore","section":"🧰 Maintenance","hidden":true}
+            ],
+            "prerelease": "${{ inputs.prerelease }}",
+            "release-as": "${{ steps.get-next-version.outputs.version }}",
+            "extra-files": "${{ inputs.extra-files }}"
+          }
+
     - name: 🚀 Create release
       uses: google-github-actions/release-please-action@v4
       id: release-please
       with:
         token: ${{ steps.generate_token.outputs.token }}
         release-type: ${{ inputs.release-type }}
-        pull-request-title-pattern: "chore: release v${version}"
-        changelog-types: >
-          [{"type":"feat","section":"🚀 Features","hidden":false},
-          {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
-          {"type":"deps","section":"🌲 Dependencies","hidden":false},
-          {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
-          {"type":"style","section":"🎨 Design Improvements","hidden":false},
-          {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
-          {"type":"chore","section":"🧰 Maintenance","hidden":true}]
-        prerelease: ${{ inputs.prerelease }}
-        default-branch: ${{ github.ref_name }}
-        release-as: ${{ steps.get-next-version.outputs.version }}
-        extra-files: ${{ inputs.extra-files }}
+        config-file: release-please-config.json
+        target-branch: ${{ github.ref_name }}
 
     - name: 🔑 Set Git User
       shell: bash
