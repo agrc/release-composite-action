@@ -74,7 +74,7 @@ runs:
         replaceWith: |
           {
             "pull-request-title-pattern": "chore: release v${version}",
-            "changelog-types": [
+            "changelog-sections": [
               {"type":"feat","section":"🚀 Features","hidden":false},
               {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
               {"type":"deps","section":"🌲 Dependencies","hidden":false},
