@@ -76,7 +76,7 @@ runs:
             "pull-request-title-pattern": "chore: release v${version}",
             "changelog-sections": [
               {"type":"feat","section":"🚀 Features","hidden":false},
-              {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
+              {"type":"fix","section":"Bug Hello","hidden":false},
               {"type":"deps","section":"🌲 Dependencies","hidden":false},
               {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
               {"type":"style","section":"🎨 Design Improvements","hidden":false},
