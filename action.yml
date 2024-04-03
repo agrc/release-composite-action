@@ -90,7 +90,7 @@ runs:
         touch .release-please-manifest.json
 
     - name: 🥾 Bootstrap default Release Please manifest file
-      if: ${{ !steps.files-exist.outputs.HAS_MANIFEST && steps.get-next-version.outputs.current-version != null }}
+      if: ${{ ! steps.files-exist.outputs.HAS_MANIFEST && steps.get-next-version.outputs.current-version != null }}
       uses: RadovanPelka/github-action-json@main
       with:
         path: .release-please-manifest.json
@@ -154,7 +154,7 @@ runs:
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
-      if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && !inputs.prerelease }}
+      if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && ! inputs.prerelease }}
       run: |
         echo "deleting existing tags, if any"
         git tag -d v${{ steps.release-please.outputs.major }} || true
