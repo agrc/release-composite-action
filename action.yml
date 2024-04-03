@@ -83,9 +83,9 @@ runs:
               {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
               {"type":"chore","section":"🧰 Maintenance","hidden":true}
             ],
-            "prerelease": "${{ inputs.prerelease }}",
+            "prerelease": ${{ inputs.prerelease }},
             "release-as": "${{ steps.get-next-version.outputs.version }}",
-            "extra-files": "${{ inputs.extra-files }}"
+            "extra-files": ["${{ inputs.extra-files }}"]
           }
 
     - name: 🚀 Create release
