@@ -1,0 +1,16 @@
+{
+  "branches": [
+    "main",
+    {
+      "name": "dev",
+      "prerelease": true
+    }
+  ],
+  "plugins": [
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    ["semantic-release-pypi", {
+      "pypiPublish": false
+    }
+  ]
+}

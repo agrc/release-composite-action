@@ -25,7 +25,7 @@ inputs:
     description: Installed GitHub Email (e.g. secrets.UGRC_RELEASE_BOT_EMAIL)
     required: true
   release-type:
-    description: Release Please release type
+    description: Release Please release type (python, simple, node)
     required: false
     default: node
   extra-files:
@@ -49,6 +49,11 @@ runs:
         app-id: ${{ inputs.github-app-id }}
         private-key: ${{ inputs.github-app-key }}
 
+    - name: Setup NodeJS
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts
+
     - name: ⬇️ Set up code
       uses: actions/checkout@v4
       with:
@@ -56,72 +61,28 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
-    - name: ⏩ Get next version
-      id: get-next-version
-      uses: agrc/get-next-version-action@v1
-      with:
-        prerelease: ${{ inputs.prerelease }}
-        repo-token: ${{ inputs.repo-token }}
-
-    - name: 🔍 Check if config files exist
-      id: files-exist
+    - name: Install semantic-release dependencies
       shell: bash
       run: |
-        if [ -f .release-please-manifest.json ]; then
-          echo "manifest file exists"
-          echo "HAS_MANIFEST=yes" >> "$GITHUB_OUTPUT"
-        else
-          echo "manifest does not exist"
-          echo "HAS_MANIFEST=no" >> "$GITHUB_OUTPUT"
-        fi
+        npm i -g semantic-release @semantic-release/changelog semantic-release-pypi
 
-        if [ -f release-please-config.json ]; then
-          echo "config file exists"
-          echo "HAS_CONFIG=yes" >> "$GITHUB_OUTPUT"
-        else
-          echo "config does not exist"
-          echo "HAS_CONFIG=no" >> "$GITHUB_OUTPUT"
-        fi
-
-    - name: 👇 Ensure config files exists
+    - name: Get appropriate config file
+      id: config-file
       shell: bash
       run: |
-        touch release-please-config.json
-        touch .release-please-manifest.json
+        echo "Getting release-please config file"
+        echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json)" >> $GITHUB_ENV
 
-    - name: 🥾 Bootstrap default Release Please manifest file
-      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-next-version.outputs.current-version-number != null }}
+    - name: 🔀 Create/merge release config file
       uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
       with:
-        path: .release-please-manifest.json
+        path: .releaserc.json
         replaceWith: |
-          {
-            ".": "${{ steps.get-next-version.outputs.current-version-number }}"
-          }
+          ${{ steps.config-file.outputs.contents }}
 
-    - name: 🔀 Update/merge Release Please config file
-      uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
-      with:
-        path: release-please-config.json
-        replaceWith: |
-          {
-            "pull-request-title-pattern": "chore: release v${version}",
-            "changelog-sections": [
-              {"type":"feat","section":"🚀 Features","hidden":false},
-              {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
-              {"type":"deps","section":"🌲 Dependencies","hidden":false},
-              {"type":"docs","section":"📖 Documentation Improvements","hidden":false},
-              {"type":"style","section":"🎨 Design Improvements","hidden":false},
-              {"type":"ci","section":"⚙️ Continuous Integration Changes","hidden":true},
-              {"type":"chore","section":"🧰 Maintenance","hidden":true}
-            ],
-            "prerelease": ${{ inputs.prerelease }},
-            "release-as": "${{ steps.get-next-version.outputs.version }}",
-            "release-type": "${{ inputs.release-type }}",
-            "packages": {
-              ".": {}
-            }
-          }
+    - name: 🎁 Standard Release
+      shell: bash
+      run: npx semantic-release --repository-url=${{ github.repository }}
 
     - name: 🔑 Set git user
       shell: bash
@@ -129,22 +90,8 @@ runs:
         git config user.name "${{ inputs.github-app-name }}"
         git config user.email "${{ inputs.github-app-email }}"
 
-    - name: ✔ Commit
-      shell: bash
-      run: |
-        git add .release-please-manifest.json
-        git add release-please-config.json
-        git diff --staged --quiet || git commit -m "chore: configure release please [skip ci]"
-        git push
-
-    - name: 🚀 Create release
-      uses: google-github-actions/release-please-action@v4
-      id: release-please
-      with:
-        token: ${{ steps.generate_token.outputs.token }}
-        config-file: release-please-config.json
-        manifest-file: .release-please-manifest.json
-        target-branch: ${{ github.ref_name }}
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v6
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
