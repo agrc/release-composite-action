@@ -22,7 +22,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: '${{ github.ref_name }}'
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
