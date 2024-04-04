@@ -71,14 +71,14 @@ runs:
       shell: bash
       run: |
         echo "Getting release-please config file"
-        echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json)" >> $GITHUB_ENV
+        echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json)" | tr -d '[:space:]' >> $GITHUB_ENV
+        touch .releaserc.json
 
     - name: 🔀 Create/merge release config file
       uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
       with:
         path: .releaserc.json
-        replaceWith: |
-          ${{ steps.config-file.outputs.contents }}
+        replaceWith: ${{ steps.config-file.outputs.contents }}
 
     - name: 🎁 Standard Release
       shell: bash
