@@ -58,7 +58,7 @@ runs:
 
     - name: ⏩ Get next version
       id: get-next-version
-      uses: agrc/get-next-version-action@v1.3.0-0
+      uses: agrc/get-next-version-action@v1
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
@@ -90,13 +90,13 @@ runs:
         touch .release-please-manifest.json
 
     - name: 🥾 Bootstrap default Release Please manifest file
-      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-next-version.outputs.current-version != null }}
+      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-next-version.outputs.current-version-number != null }}
       uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
       with:
         path: .release-please-manifest.json
         replaceWith: |
           {
-            ".": "${{ steps.get-next-version.outputs.current-version }}"
+            ".": "${{ steps.get-next-version.outputs.current-version-number }}"
           }
 
     - name: 🔀 Update/merge Release Please config file
