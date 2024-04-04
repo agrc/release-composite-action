@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.2.1-0) (2024-04-04)
+
+
+### 🐛 Bug Fixes
+
+* upgrade to release please action v4 config file requirements ([b55aa4b](https://github.com/agrc/release-composite-action/commit/b55aa4bc2a8efe8a07f635ba5d1029bb0ae67744))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
