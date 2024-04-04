@@ -58,7 +58,7 @@ runs:
 
     - name: ⏩ Get next version
       id: get-next-version
-      uses: agrc/get-next-version-action@dev
+      uses: agrc/get-next-version-action@v1.3.0-0
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
