@@ -71,7 +71,7 @@ runs:
       shell: bash
       run: |
         echo "Getting release-please config file"
-        echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json)" | tr -d '[:space:]' >> $GITHUB_ENV
+        echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json | tr -d '[:space:]')" >> $GITHUB_ENV
         touch .releaserc.json
 
     - name: 🔀 Create/merge release config file
