@@ -69,18 +69,18 @@ runs:
       run: |
         if [ -f .release-please-manifest.json ]; then
           echo "manifest file exists"
-          echo "HAS_MANIFEST=1" >> "$GITHUB_OUTPUT"
+          echo "HAS_MANIFEST=yes" >> "$GITHUB_OUTPUT"
         else
           echo "manifest does not exist"
-          echo "HAS_MANIFEST=0" >> "$GITHUB_OUTPUT"
+          echo "HAS_MANIFEST=no" >> "$GITHUB_OUTPUT"
         fi
 
         if [ -f release-please-config.json ]; then
           echo "config file exists"
-          echo "HAS_CONFIG=1" >> "$GITHUB_OUTPUT"
+          echo "HAS_CONFIG=yes" >> "$GITHUB_OUTPUT"
         else
           echo "config does not exist"
-          echo "HAS_CONFIG=0" >> "$GITHUB_OUTPUT"
+          echo "HAS_CONFIG=no" >> "$GITHUB_OUTPUT"
         fi
 
     - name: 👇 Ensure config files exists
@@ -90,7 +90,7 @@ runs:
         touch .release-please-manifest.json
 
     - name: 🥾 Bootstrap default Release Please manifest file
-      if: ${{ ! steps.files-exist.outputs.HAS_MANIFEST && steps.get-next-version.outputs.current-version != null }}
+      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-next-version.outputs.current-version != null }}
       uses: RadovanPelka/github-action-json@main
       with:
         path: .release-please-manifest.json
@@ -154,7 +154,7 @@ runs:
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
-      if: ${{ inputs.create-major-minor-tags && steps.release-please.outputs.release_created && ! inputs.prerelease }}
+      if: ${{ inputs.create-major-minor-tags == 'true' && steps.release-please.outputs.release_created == 'true' && inputs.prerelease != 'true' }}
       run: |
         echo "deleting existing tags, if any"
         git tag -d v${{ steps.release-please.outputs.major }} || true
