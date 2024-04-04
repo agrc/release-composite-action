@@ -52,7 +52,8 @@ runs:
     - name: Setup NodeJS
       uses: actions/setup-node@v4
       with:
-        node-version: lts
+        node-version: lts/*
+        cache: npm
 
     - name: ⬇️ Set up code
       uses: actions/checkout@v4
