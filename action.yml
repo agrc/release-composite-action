@@ -123,11 +123,15 @@ runs:
             }
           }
 
+    - name: 🔑 Set git user
+      shell: bash
+      run: |
+        git config user.name "${{ inputs.github-app-name }}"
+        git config user.email "${{ inputs.github-app-email }}"
+
     - name: ✔ Commit
       shell: bash
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git add .release-please-manifest.json
         git add release-please-config.json
         git diff --staged --quiet || git commit -m "chore: configure release please [skip ci]"
@@ -141,12 +145,6 @@ runs:
         config-file: release-please-config.json
         manifest-file: .release-please-manifest.json
         target-branch: ${{ github.ref_name }}
-
-    - name: 🔑 Set git user
-      shell: bash
-      run: |
-        git config user.name "${{ inputs.github-app-name }}"
-        git config user.email "${{ inputs.github-app-email }}"
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
