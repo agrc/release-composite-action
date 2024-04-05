@@ -78,6 +78,7 @@ runs:
         extra_plugins: |
           @semantic-release/changelog
           semantic-release-pypi
+          conventional-changelog-conventionalcommits
         repository_url: ${{ github.repositoryUrl }}
 
     - name: 🧹 Clean up
