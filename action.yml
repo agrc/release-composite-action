@@ -81,12 +81,13 @@ runs:
       with:
         branches: |
           {
-            "name": "${{ github.ref_name }}",
-            "prerelease": ${{ inputs.prerelease == 'true' }}
+            name: "${{ github.ref_name }}",
+            prerelease: ${{ inputs.prerelease == 'true' }}
           }
         extra_plugins: |
           @semantic-release/changelog
           semantic-release-pypi
+        repository_url: ${{ github.repository }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
