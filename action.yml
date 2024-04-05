@@ -88,12 +88,6 @@ runs:
           @semantic-release/changelog
           semantic-release-pypi
 
-    - name: 🔑 Set git user
-      shell: bash
-      run: |
-        git config user.name "${{ inputs.github-app-name }}"
-        git config user.email "${{ inputs.github-app-email }}"
-
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
       with:
@@ -116,17 +110,23 @@ runs:
         labels: release
         commit-message: "chore: release v${{ steps.semantic-release.outputs.new_release_version }}"
 
-    - name: 🏷️ Tag major and minor versions
-      shell: bash
-      if: ${{ inputs.create-major-minor-tags == 'true' && steps.release-please.outputs.release_created == 'true' && inputs.prerelease != 'true' }}
-      run: |
-        echo "deleting existing tags, if any"
-        git tag -d v${{ steps.release-please.outputs.major }} || true
-        git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
-        git push origin :v${{ steps.release-please.outputs.major }} || true
-        git push origin :v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
-        echo "creating new tags"
-        git tag -a v${{ steps.release-please.outputs.major }} -m "Release v${{ steps.release-please.outputs.major }}"
-        git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
-        git push origin v${{ steps.release-please.outputs.major }}
-        git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
+    # - name: 🔑 Set git user
+    #   shell: bash
+    #   run: |
+    #     git config user.name "${{ inputs.github-app-name }}"
+    #     git config user.email "${{ inputs.github-app-email }}"
+
+    # - name: 🏷️ Tag major and minor versions
+    #   shell: bash
+    #   if: ${{ inputs.create-major-minor-tags == 'true' && steps.release-please.outputs.release_created == 'true' && inputs.prerelease != 'true' }}
+    #   run: |
+    #     echo "deleting existing tags, if any"
+    #     git tag -d v${{ steps.release-please.outputs.major }} || true
+    #     git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+    #     git push origin :v${{ steps.release-please.outputs.major }} || true
+    #     git push origin :v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+    #     echo "creating new tags"
+    #     git tag -a v${{ steps.release-please.outputs.major }} -m "Release v${{ steps.release-please.outputs.major }}"
+    #     git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
+    #     git push origin v${{ steps.release-please.outputs.major }}
+    #     git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
