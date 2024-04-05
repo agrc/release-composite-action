@@ -41,3 +41,13 @@ jobs:
           github-app-name: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
           github-app-email: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
 ```
+
+## Development
+
+### Act Test Runner
+
+If you are using rancher, make sure to set the following environment variable prior to running `act`:
+
+```sh
+export DOCKER_HOST=$(docker context inspect --format '{{.Endpoints.docker.Host}}')
+```

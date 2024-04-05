@@ -57,6 +57,19 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
+    - name: Is this a release PR merge
+      id: is-release-pr
+      shell: bash
+      run: |
+        latest_commit_message=$(git log -1 --pretty=format:%s)
+        if [[ $latest_commit_message == "chore: release v"* ]]; then
+          echo "this workflow was triggered by a release PR"
+          echo "result=yes" >> $GITHUB_OUTPUT
+        else
+          echo "this workflow was not triggered by a release PR"
+          echo "result=no" >> $GITHUB_OUTPUT
+        fi
+
     - name: Get appropriate config file
       id: config-file
       shell: bash
@@ -71,6 +84,17 @@ runs:
         path: .releaserc.json
         replaceWith: ${{ steps.config-file.outputs.contents }}
 
+    - name: Update config for release
+      if: ${{ steps.is-release-pr.outputs.result == 'yes' }}
+      #: had to use this action since is allows for adding to an existing array
+      uses: restackio/update-json-file-action@2.1
+      with:
+        file: .releaserc.json
+        fields: |
+          {
+            "plugins[-1]": "@semantic-release/github"
+          }
+
     - name: 🎁 Semantic Release
       id: semantic-release
       uses: cycjimmy/semantic-release-action@v4.1.0
@@ -81,16 +105,22 @@ runs:
           conventional-changelog-conventionalcommits
         repository_url: ${{ github.repositoryUrl }}
 
-    - name: 🧹 Clean up
+    - name: 🧹 Clean up config
       shell: bash
       run: |
         rm -f .releaserc.json
+
+    - name: 🧹 Clean up tag
+      if: ${{ steps.is-release-pr.outputs.result == 'no' }}
+      shell: bash
+      run: |
         gh api repos/${{ github.repository }}/git/refs/tags/v${{ steps.semantic-release.outputs.new_release_version }} -X DELETE
       env:
         GH_TOKEN: ${{ github.token }}
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v6
+      if: ${{ steps.is-release-pr.outputs.result == 'no' }}
       with:
         token: ${{ steps.generate_token.outputs.token }}
         committer: ${{ inputs.github-app-name }} <${{ inputs.github-app-email }}>
@@ -104,6 +134,7 @@ runs:
           ${{ steps.semantic-release.outputs.new_release_notes }}
         labels: release
         commit-message: "chore: release v${{ steps.semantic-release.outputs.new_release_version }}"
+        branch: ugrc-release-bot/${{ inputs.prerelease == 'true' && 'pre-release' || 'release' }}
 
     - name: 🔑 Set git user
       shell: bash
