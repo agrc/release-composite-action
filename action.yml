@@ -78,7 +78,7 @@ runs:
       uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
       with:
         path: .releaserc.json
-        replaceWith: ${{ steps.config-file.outputs.contents }}
+        replaceWith: steps.config-file.outputs.contents
 
     - name: 🎁 Standard Release
       shell: bash
