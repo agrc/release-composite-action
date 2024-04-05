@@ -49,11 +49,6 @@ runs:
         app-id: ${{ inputs.github-app-id }}
         private-key: ${{ inputs.github-app-key }}
 
-    - name: Setup NodeJS
-      uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-
     - name: ⬇️ Set up code
       uses: actions/checkout@v4
       with:
@@ -65,7 +60,7 @@ runs:
       id: config-file
       shell: bash
       run: |
-        echo "Getting release-please config file"
+        echo "Getting semantic-release config file"
         echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json | tr -d '[:space:]')" >> $GITHUB_OUTPUT
         touch .releaserc.json
 
@@ -79,11 +74,6 @@ runs:
       id: semantic-release
       uses: cycjimmy/semantic-release-action@v4.1.0
       with:
-        branches: |
-          {
-            name: "${{ github.ref_name }}",
-            prerelease: ${{ inputs.prerelease == 'true' }}
-          }
         extra_plugins: |
           @semantic-release/changelog
           semantic-release-pypi
@@ -111,23 +101,24 @@ runs:
         labels: release
         commit-message: "chore: release v${{ steps.semantic-release.outputs.new_release_version }}"
 
-    # - name: 🔑 Set git user
-    #   shell: bash
-    #   run: |
-    #     git config user.name "${{ inputs.github-app-name }}"
-    #     git config user.email "${{ inputs.github-app-email }}"
+    - name: 🔑 Set git user
+      shell: bash
+      if: ${{ steps.semantic-release.outputs.new_release_published && inputs.prerelease != 'true' }}
+      run: |
+        git config user.name "${{ inputs.github-app-name }}"
+        git config user.email "${{ inputs.github-app-email }}"
 
-    # - name: 🏷️ Tag major and minor versions
-    #   shell: bash
-    #   if: ${{ inputs.create-major-minor-tags == 'true' && steps.release-please.outputs.release_created == 'true' && inputs.prerelease != 'true' }}
-    #   run: |
-    #     echo "deleting existing tags, if any"
-    #     git tag -d v${{ steps.release-please.outputs.major }} || true
-    #     git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
-    #     git push origin :v${{ steps.release-please.outputs.major }} || true
-    #     git push origin :v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
-    #     echo "creating new tags"
-    #     git tag -a v${{ steps.release-please.outputs.major }} -m "Release v${{ steps.release-please.outputs.major }}"
-    #     git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
-    #     git push origin v${{ steps.release-please.outputs.major }}
-    #     git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
+    - name: 🏷️ Tag major and minor versions
+      shell: bash
+      if: ${{ steps.semantic-release.outputs.new_release_published && inputs.create-major-minor-tags == 'true' && inputs.prerelease != 'true' }}
+      run: |
+        echo "deleting existing tags, if any"
+        git tag -d v${{ steps.release-please.outputs.major }} || true
+        git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+        git push origin :v${{ steps.release-please.outputs.major }} || true
+        git push origin :v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+        echo "creating new tags"
+        git tag -a v${{ steps.release-please.outputs.major }} -m "Release v${{ steps.release-please.outputs.major }}"
+        git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
+        git push origin v${{ steps.release-please.outputs.major }}
+        git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
