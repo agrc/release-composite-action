@@ -1,3 +1,48 @@
+## [1.3.0-dev.1](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0-dev.1) (2024-04-05)
+
+
+### 🚀Features
+
+* handle release pr merges ([96915a0](https://github.com/agrc/release-composite-action/commit/96915a0c5d5155427c6bbbcaab1cdf6a1db50380))
+* switch to semantic release ([8c0f9e2](https://github.com/agrc/release-composite-action/commit/8c0f9e22bdfcdf38d59cac206a1e4ecb5b7cda08))
+* test feature ([39ef9e6](https://github.com/agrc/release-composite-action/commit/39ef9e6d1642a4be22215d37d6a8bed5155658f7))
+* test feature two ([40c876a](https://github.com/agrc/release-composite-action/commit/40c876a857e092ef4102c8cce214927e881cb67e))
+
+
+### 🐛BugFixes
+
+* add missing extra plugin ([9eef9e5](https://github.com/agrc/release-composite-action/commit/9eef9e5da365f8bb31373b326585097330f7b667))
+* add token for gh ([a13dd92](https://github.com/agrc/release-composite-action/commit/a13dd92e152d972af6933d129dfeb6c3712939e3))
+* apply custom sections to change log ([fea0aaf](https://github.com/agrc/release-composite-action/commit/fea0aaf24f1b7963b376f89d43af7c31893a0334))
+* clean up semantic release config ([997eed8](https://github.com/agrc/release-composite-action/commit/997eed8af11128c0fca0339a0132b3f33825faeb))
+* clean up tag ([6d62acd](https://github.com/agrc/release-composite-action/commit/6d62acd607f5394f745ef9bdad43dbd21fa2786f))
+* fix delete tag command ([f00e0ef](https://github.com/agrc/release-composite-action/commit/f00e0ef743981db0d4362f7ff3ca75ba136739b0))
+* move branch back to config files ([a035167](https://github.com/agrc/release-composite-action/commit/a035167c8c02bf607feb2d8214d330485d4561a9))
+* no lock file for npm caching ([3f0951b](https://github.com/agrc/release-composite-action/commit/3f0951bc4626be3b2fe1110ba5fbdf2cc05a8a53))
+* node setup ([7e790b5](https://github.com/agrc/release-composite-action/commit/7e790b5dbbc5ad3179da477b0585c1d87d782803))
+* output reference syntax ([f36622d](https://github.com/agrc/release-composite-action/commit/f36622d4f851e38262c2db9f3aec1c0c5b03adc7))
+* output syntax ([3a45573](https://github.com/agrc/release-composite-action/commit/3a45573e0155cc6a498bd409d215ebaca89548e3))
+* pin to specific version ([6bf5ac5](https://github.com/agrc/release-composite-action/commit/6bf5ac5e6ebb58f9c9ae4647fe1122ea582671ca))
+* remove whitespace from config ([e34f0e9](https://github.com/agrc/release-composite-action/commit/e34f0e9559df1649d5661c43fe3f994b8bc56d95))
+* repo url context name ([5d694fb](https://github.com/agrc/release-composite-action/commit/5d694fbbf618c8f13315b2344fcbbc71ee0f283c))
+* strip whitespace ([7400192](https://github.com/agrc/release-composite-action/commit/7400192ff63f635092c48b6db0bcde3734ab9c67))
+* switch to semantic release action and refine PR details ([be7e859](https://github.com/agrc/release-composite-action/commit/be7e859712f555444767b233df4de4149dfe8a35))
+* tag reference ([b54bb2e](https://github.com/agrc/release-composite-action/commit/b54bb2e40f8d2f3e0c76a97a34d1b8e79d192d88))
+* test fix ([174b16e](https://github.com/agrc/release-composite-action/commit/174b16e372700ef3678abf180986254dc21c6eca))
+* upgrade to release please action v4 config file requirements ([69db3de](https://github.com/agrc/release-composite-action/commit/69db3de69c17627d0bab16b53a0688fa75055358)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+* use ugrc release bot for release config commit ([db9daa7](https://github.com/agrc/release-composite-action/commit/db9daa75eab4f11669ba10a7ebcf5fada46ce581))
+
+
+### 📖DocumentationImprovements
+
+* better concurrency group example ([2b0626a](https://github.com/agrc/release-composite-action/commit/2b0626aaef5e0efd4b9a695db8d8c06d708b7669))
+* test fix ([7b10d71](https://github.com/agrc/release-composite-action/commit/7b10d7110948c0f6f2ff178557685ce46d4ae0e4))
+
+
+### 🎨DesignImprovements
+
+* clean up release rules ([eaed185](https://github.com/agrc/release-composite-action/commit/eaed18556856f335cbe13379fc9aa4fc9f3e548f))
+
 # Changelog
 
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
