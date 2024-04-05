@@ -84,7 +84,7 @@ runs:
       shell: bash
       run: |
         rm -f .releaserc.json
-        gh tags delete v${{ steps.semantic-release.outputs.new_release_version }}
+        gh api repos/${{ github.repository }}/git/refs/tags/${{ steps.semantic-release.outputs.new_release_version }} -X DELETE
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v6
