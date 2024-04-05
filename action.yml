@@ -79,18 +79,16 @@ runs:
           semantic-release-pypi
         repository_url: ${{ github.repositoryUrl }}
 
-    - name: Create Pull Request
+    - name: 🧹 Clean up
+      shell: bash
+      run: rm -f .releaserc.json
+
+    - name: Create pull request
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ steps.generate_token.outputs.token }}
         committer: ${{ inputs.github-app-name }} <${{ inputs.github-app-email }}>
         author: ${{ inputs.github-app-name }} <${{ inputs.github-app-email }}>
-        add-paths: |
-          CHANGELOG.md
-          package.json
-          package-lock.json
-          **/setup.py
-          pyproject.toml
         title: "chore: release v${{ steps.semantic-release.outputs.new_release_version }}"
         body: |
           This PR was created automatically by [agrc/release-composite-action](https://github.com/agrc/release-composite-action).
