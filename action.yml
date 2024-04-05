@@ -84,7 +84,7 @@ runs:
       shell: bash
       run: |
         rm -f .releaserc.json
-        gh api repos/${{ github.repository }}/git/refs/tags/${{ steps.semantic-release.outputs.new_release_version }} -X DELETE
+        gh api repos/${{ github.repository }}/git/refs/tags/v${{ steps.semantic-release.outputs.new_release_version }} -X DELETE
       env:
         GH_TOKEN: ${{ github.token }}
 
