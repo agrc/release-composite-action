@@ -61,11 +61,6 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
-    - name: Install semantic-release dependencies
-      shell: bash
-      run: |
-        npm i -g semantic-release @semantic-release/changelog semantic-release-pypi
-
     - name: Get appropriate config file
       id: config-file
       shell: bash
@@ -80,9 +75,18 @@ runs:
         path: .releaserc.json
         replaceWith: ${{ steps.config-file.outputs.contents }}
 
-    - name: 🎁 Standard Release
-      shell: bash
-      run: npx semantic-release --repository-url=${{ github.repository }}
+    - name: 🎁 Semantic Release
+      id: semantic-release
+      uses: cycjimmy/semantic-release-action@v4
+      with:
+        branches: |
+          {
+            "name": "${{ github.ref_name }}",
+            "prerelease": ${{ inputs.prerelease == 'true' }}
+          }
+        extra_plugins: |
+          @semantic-release/changelog
+          semantic-release-pypi
 
     - name: 🔑 Set git user
       shell: bash
@@ -92,6 +96,25 @@ runs:
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ steps.generate_token.outputs.token }}
+        committer: ${{ inputs.github-app-name }} <${{ inputs.github-app-email }}>
+        author: ${{ inputs.github-app-name }} <${{ inputs.github-app-email }}>
+        add-paths: |
+          CHANGELOG.md
+          package.json
+          package-lock.json
+          **/setup.py
+          pyproject.toml
+        title: "chore: release v${{ steps.semantic-release.outputs.new_release_version }}"
+        body: |
+          This PR was created automatically by [agrc/release-composite-action](https://github.com/agrc/release-composite-action).
+
+          Release notes:
+
+          ${{ steps.semantic-release.outputs.new_release_notes }}
+        labels: release
+        commit-message: "chore: release v${{ steps.semantic-release.outputs.new_release_version }}"
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
