@@ -1,3 +1,25 @@
+# [1.3.0-dev.1](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0-dev.1) (2024-04-05)
+
+
+### Bug Fixes
+
+* no lock file for npm caching ([3f0951b](https://github.com/agrc/release-composite-action/commit/3f0951bc4626be3b2fe1110ba5fbdf2cc05a8a53))
+* node setup ([7e790b5](https://github.com/agrc/release-composite-action/commit/7e790b5dbbc5ad3179da477b0585c1d87d782803))
+* output reference syntax ([f36622d](https://github.com/agrc/release-composite-action/commit/f36622d4f851e38262c2db9f3aec1c0c5b03adc7))
+* output syntax ([3a45573](https://github.com/agrc/release-composite-action/commit/3a45573e0155cc6a498bd409d215ebaca89548e3))
+* remove whitespace from config ([e34f0e9](https://github.com/agrc/release-composite-action/commit/e34f0e9559df1649d5661c43fe3f994b8bc56d95))
+* strip whitespace ([7400192](https://github.com/agrc/release-composite-action/commit/7400192ff63f635092c48b6db0bcde3734ab9c67))
+* test fix ([174b16e](https://github.com/agrc/release-composite-action/commit/174b16e372700ef3678abf180986254dc21c6eca))
+* upgrade to release please action v4 config file requirements ([69db3de](https://github.com/agrc/release-composite-action/commit/69db3de69c17627d0bab16b53a0688fa75055358)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+* use ugrc release bot for release config commit ([db9daa7](https://github.com/agrc/release-composite-action/commit/db9daa75eab4f11669ba10a7ebcf5fada46ce581))
+
+
+### Features
+
+* switch to semantic release ([8c0f9e2](https://github.com/agrc/release-composite-action/commit/8c0f9e22bdfcdf38d59cac206a1e4ecb5b7cda08))
+* test feature ([39ef9e6](https://github.com/agrc/release-composite-action/commit/39ef9e6d1642a4be22215d37d6a8bed5155658f7))
+* test feature two ([40c876a](https://github.com/agrc/release-composite-action/commit/40c876a857e092ef4102c8cce214927e881cb67e))
+
 # Changelog
 
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
