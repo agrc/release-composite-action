@@ -77,7 +77,7 @@ runs:
 
     - name: 🎁 Semantic Release
       id: semantic-release
-      uses: cycjimmy/semantic-release-action@v4
+      uses: cycjimmy/semantic-release-action@v4.1.0
       with:
         branches: |
           {
