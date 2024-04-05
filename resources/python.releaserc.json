@@ -12,19 +12,11 @@
       {
         "preset": "angular",
         "releaseRules": [
-          { "type": "feat", "section": "🚀 Features", "release": "minor" },
-          { "type": "fix", "section": "🐛 Bug Fixes", "release": "patch" },
-          { "type": "deps", "section": "🌲 Dependencies", "release": "patch" },
-          {
-            "type": "docs",
-            "section": "📖 Documentation Improvements",
-            "release": "patch"
-          },
-          {
-            "type": "style",
-            "section": "🎨 Design Improvements",
-            "release": "patch"
-          }
+          { "type": "feat", "release": "minor" },
+          { "type": "fix", "release": "patch" },
+          { "type": "deps", "release": "patch" },
+          { "type": "docs", "release": "patch" },
+          { "type": "style", "release": "patch" }
         ]
       }
     ],
