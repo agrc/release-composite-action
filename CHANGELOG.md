@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0) (2024-04-08)
+
+
+### 🚀 Features
+
+* another test feature ([fa2b413](https://github.com/agrc/release-composite-action/commit/fa2b413706625619d5784e25f895316998cc7ca9))
+* test feature ([d72deb9](https://github.com/agrc/release-composite-action/commit/d72deb9cd4a7feb7ad5181b4dc7fcae7ec3b9cf0))
+* test feature two ([0d6f94b](https://github.com/agrc/release-composite-action/commit/0d6f94ba4d83d5c5dffd1891990344211d5ca6fe))
+
+
+### 🐛 Bug Fixes
+
+* drop get-next-version in favor of custom script ([da9fc62](https://github.com/agrc/release-composite-action/commit/da9fc62ee50facab8cbe16446ac488eaf714616f))
+* finish removing references to get-next-version ([26417b1](https://github.com/agrc/release-composite-action/commit/26417b11996594ee23d9d7c383ff76e3a0fa1bbc))
+* get proper output ([7032e02](https://github.com/agrc/release-composite-action/commit/7032e0235293b4591a003e8211f05f07514f7f26))
+* octokit reference ([cbb5e19](https://github.com/agrc/release-composite-action/commit/cbb5e19e45323d5493d3fa8e860130fcb1af8596))
+* remove release-as config ([79f6225](https://github.com/agrc/release-composite-action/commit/79f6225cc260c771cc45afe08f3364a0e04ea336))
+* test fix ([4479495](https://github.com/agrc/release-composite-action/commit/4479495a2554a267630aacbb9330c54dfc1be784))
+* upgrade to release please action v4 config file requirements ([69db3de](https://github.com/agrc/release-composite-action/commit/69db3de69c17627d0bab16b53a0688fa75055358)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+* use ugrc release bot for release config commit ([e90bcde](https://github.com/agrc/release-composite-action/commit/e90bcde8e8c65becd599cd3782303de8124d835a))
+
+
+### 📖 Documentation Improvements
+
+* better concurrency group example ([ad38d0c](https://github.com/agrc/release-composite-action/commit/ad38d0c18f62eb2af77f0233950d438d1a570f53))
+* test fix ([46e89ee](https://github.com/agrc/release-composite-action/commit/46e89ee6fc566269021cae546f5deecabba967bf))
+* test fix ([d016492](https://github.com/agrc/release-composite-action/commit/d0164920a093afc90d55bbcd28308aa17572c93c))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
