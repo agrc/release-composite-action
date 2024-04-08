@@ -73,16 +73,7 @@ runs:
     - name: Get appropriate config file
       id: config-file
       shell: bash
-      run: |
-        echo "Getting semantic-release config file"
-        echo "contents=$(cat ${{ github.action_path }}/resources/${{ inputs.release-type }}.releaserc.json | tr -d '[:space:]')" >> $GITHUB_OUTPUT
-        touch .releaserc.json
-
-    - name: 🔀 Create/merge release config file
-      uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
-      with:
-        path: .releaserc.json
-        replaceWith: ${{ steps.config-file.outputs.contents }}
+      run: cp ${{ github.action_path }}/resources/configs/${{ inputs.release-type }}.releaserc.json .releaserc.json
 
     - name: Update config for release
       if: ${{ steps.is-release-pr.outputs.result == 'yes' }}
