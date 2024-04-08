@@ -37,7 +37,7 @@ outputs:
     value: ${{ steps.release-please.outputs.release_created }}
   released_version:
     description: The version number that was released
-    value: ${{ steps.get-next-version.outputs.version }}
+    value: ${{ steps.release-please.outputs.tag_name }}
 
 runs:
   using: "composite"
@@ -114,7 +114,7 @@ runs:
         touch .release-please-manifest.json
 
     - name: 🥾 Bootstrap default Release Please manifest file
-      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-next-version.outputs.current-version-number != null }}
+      if: ${{ steps.files-exist.outputs.HAS_MANIFEST == 'no' && steps.get-current-version.outputs.result != null }}
       uses: RadovanPelka/github-action-json@c1e93581d313d6e1d56f7f67582d4051674ebc57
       with:
         path: .release-please-manifest.json
