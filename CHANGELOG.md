@@ -1,3 +1,16 @@
+## [1.3.0-dev.2](https://github.com/agrc/release-composite-action/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2024-04-08)
+
+
+### 🐛 Bug Fixes
+
+* simplify config file retrieval ([7d759bd](https://github.com/agrc/release-composite-action/commit/7d759bd1f8bba1df6d03c1b96ccf2ff91fae90fa))
+* use script to edit config for release ([b8ad9eb](https://github.com/agrc/release-composite-action/commit/b8ad9eb916d9524fe4a2671886e99f2bd5f5edc3))
+
+
+### 📖 Documentation Improvements
+
+* add act command with token secret ([001391e](https://github.com/agrc/release-composite-action/commit/001391efd28bf99abd0a11feadaf091ba04eab70))
+
 ## [1.3.0-dev.1](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0-dev.1) (2024-04-05)
 
 
