@@ -46,8 +46,14 @@ jobs:
 
 ### Act Test Runner
 
-If you are using rancher, make sure to set the following environment variable prior to running `act`:
+If you are using rancher, make sure to set the following environment variable prior to running act:
 
 ```sh
 export DOCKER_HOST=$(docker context inspect --format '{{.Endpoints.docker.Host}}')
+```
+
+To run act:
+
+```sh
+act -s GITHUB_TOKEN="$(gh auth token)"
 ```
