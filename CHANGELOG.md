@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.3.0-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0-0) (2024-04-08)
+
+
+### 🚀 Features
+
+* another test feature ([9fbc327](https://github.com/agrc/release-composite-action/commit/9fbc3275d6dd5a35152bf53390ce4c1e8a56aa06))
+* test feature ([39ef9e6](https://github.com/agrc/release-composite-action/commit/39ef9e6d1642a4be22215d37d6a8bed5155658f7))
+* test feature two ([40c876a](https://github.com/agrc/release-composite-action/commit/40c876a857e092ef4102c8cce214927e881cb67e))
+
+
+### 🐛 Bug Fixes
+
+* remove release-as config ([4d43266](https://github.com/agrc/release-composite-action/commit/4d432668bb50ab74fa2c1c177bb4f58c229b894f))
+* test fix ([174b16e](https://github.com/agrc/release-composite-action/commit/174b16e372700ef3678abf180986254dc21c6eca))
+* upgrade to release please action v4 config file requirements ([69db3de](https://github.com/agrc/release-composite-action/commit/69db3de69c17627d0bab16b53a0688fa75055358)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+* use ugrc release bot for release config commit ([db9daa7](https://github.com/agrc/release-composite-action/commit/db9daa75eab4f11669ba10a7ebcf5fada46ce581))
+
+
+### 📖 Documentation Improvements
+
+* better concurrency group example ([2b0626a](https://github.com/agrc/release-composite-action/commit/2b0626aaef5e0efd4b9a695db8d8c06d708b7669))
+* test fix ([a028814](https://github.com/agrc/release-composite-action/commit/a02881491ea6b2b51f28e89d9ee9091a83e9b9ba))
+* test fix ([7b10d71](https://github.com/agrc/release-composite-action/commit/7b10d7110948c0f6f2ff178557685ce46d4ae0e4))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
