@@ -56,12 +56,22 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
-    - name: ⏩ Get next version
-      id: get-next-version
-      uses: agrc/get-next-version-action@v1
+    - name: Get current version
+      id: get-current-version
+      uses: actions/github-script@v7
       with:
-        prerelease: ${{ inputs.prerelease }}
-        repo-token: ${{ inputs.repo-token }}
+        script: |
+          const response = await octokit.request('GET /repos/${{ github.repository }}/releases', {
+            owner: ${{ github.repository_owner}},
+            repo: ${{ github.event.repository.name }},
+            per_page: 1,
+          });
+
+          if (response.data.length === 0) {
+            return null;
+          }
+
+          return response.data[0].tag_name.replace('v', '');
 
     - name: 🔍 Check if config files exist
       id: files-exist
@@ -96,7 +106,7 @@ runs:
         path: .release-please-manifest.json
         replaceWith: |
           {
-            ".": "${{ steps.get-next-version.outputs.current-version-number }}"
+            ".": "${{ steps.get-current-version.outputs.result }}"
           }
 
     - name: 🔀 Update/merge Release Please config file
