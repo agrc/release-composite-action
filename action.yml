@@ -116,7 +116,6 @@ runs:
               {"type":"chore","section":"🧰 Maintenance","hidden":true}
             ],
             "prerelease": ${{ inputs.prerelease }},
-            "release-as": "${{ steps.get-next-version.outputs.version }}",
             "release-type": "${{ inputs.release-type }}",
             "packages": {
               ".": {}
