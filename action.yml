@@ -84,6 +84,7 @@ runs:
       run: |
         npx release-please@16 release-pr \
           --pull-request-title-pattern "chore: release v\${version}" \
+          --pull-request-header " " \
           --changelog-sections "feat,fix,deps,docs,style" \
           --token ${{ steps.generate_token.outputs.token }} \
           --repo-url ${{ github.repositoryUrl }} \
