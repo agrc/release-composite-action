@@ -43,6 +43,7 @@ runs:
   using: "composite"
   steps:
     - name: 🪙 Convert token
+      if: ${{ !env.ACT }}
       uses: actions/create-github-app-token@v1
       id: generate_token
       with:
