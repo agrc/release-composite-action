@@ -83,13 +83,13 @@ runs:
       shell: bash
       run: |
         npx release-please release-pr \
-          --pull-request-title-pattern "chore: release v${version}" \
+          --pull-request-title-pattern "chore: release v\${version}" \
           --changelog-sections "feat,fix,deps,docs,style" \
           --token ${{ steps.generate_token.outputs.token }} \
           --repo-url ${{ github.repositoryUrl }} \
           --target-branch ${{ github.ref_name }} \
           --release-type ${{ inputs.release-type }} \
-          --extra-files ${{ inputs.extra-files }} \
+          --extra-files "${{ inputs.extra-files }}" \
           --release-as ${{ steps.get-next-version.outputs.version }}
 
     - name: 🚀 Create GitHub release
