@@ -135,7 +135,7 @@ runs:
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
-      if: ${{ inputs.create-major-minor-tags == 'true' && steps.is-release-pr.outputs.result === 'yes' && inputs.prerelease != 'true' }}
+      if: ${{ inputs.create-major-minor-tags == 'true' && steps.is-release-pr.outputs.result == 'yes' && inputs.prerelease != 'true' }}
       run: |
         echo "deleting existing tags, if any"
         git tag -d v${{ steps.release-please.outputs.major }} || true
