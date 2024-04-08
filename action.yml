@@ -57,20 +57,6 @@ runs:
         fetch-depth: 0
         token: ${{ steps.generate_token.outputs.token }}
 
-    - name: 🔑 Set git user
-      shell: bash
-      run: |
-        git config user.name "${{ inputs.github-app-name }}"
-        git config user.email "${{ inputs.github-app-email }}"
-
-    - name: ✔ Commit
-      if: ${{ !env.ACT }}
-      shell: bash
-      run: |
-        git add release-please-config.json
-        git diff --staged --quiet || git commit -m "chore: configure release please [skip ci]"
-        git push
-
     - name: Is this a release PR merge
       id: is-release-pr
       shell: bash
@@ -119,6 +105,12 @@ runs:
           --release-type ${{ inputs.release-type }}
 
         echo "release_created=yes" >> $GITHUB_OUTPUT
+
+    - name: 🔑 Set git user
+      shell: bash
+      run: |
+        git config user.name "${{ inputs.github-app-name }}"
+        git config user.email "${{ inputs.github-app-email }}"
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
