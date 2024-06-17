@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.3.0) (2024-06-17)
+
+
+### Features
+
+* another test feature ([405f266](https://github.com/agrc/release-composite-action/commit/405f266653f7ed4b10bf39245652841dd24956df))
+
+
+### Bug Fixes
+
+* remove header ([e616ebf](https://github.com/agrc/release-composite-action/commit/e616ebfb592c81f17c6142ad80e0320448fe7e4a))
+* switch to release please cli rather than action ([7d288ef](https://github.com/agrc/release-composite-action/commit/7d288efb73cb48335f2b852c04c125adf0367c0b)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+
+
+### Documentation
+
+* better concurrency group example ([232cae2](https://github.com/agrc/release-composite-action/commit/232cae2c7881e4e9b896f114d068dad825cb1e9b))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
