@@ -81,27 +81,34 @@ runs:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ steps.generate_token.outputs.token }}
 
-    - name: 🎭 Mock Get next version
-      if: ${{ env.ACT }}
-      id: get-next-version
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Set up Release Please
       shell: bash
       run: |
-        echo "version=9.9.9" >> $GITHUB_OUTPUT
+        git clone https://github.com/stdavis/release-please
+        cd release-please
+        git switch fix/merged-pr-searching
+        echo "installing dependencies"
+        npm install
 
     - name: 🚀 Create release PR
       id: create-release-pr
       if: steps.is-release-pr.outputs.result == 'no'
       shell: bash
       run: |
-        npx release-please@16 release-pr \
+        node release-please/build/src/bin/release-please.js release-pr \
           --pull-request-title-pattern "chore: release v\${version}" \
           --pull-request-header " " \
           --changelog-sections "feat,fix,deps,docs,style" \
-          --token ${{ steps.generate_token.outputs.token }} \
-          --repo-url ${{ github.repositoryUrl }} \
+          --token ${{ steps.generate_token.outputs.token}} \
+          --repo-url ${{ github.repositoryUrl || 'https://github.com/agrc/release-composite-action' }} \
           --target-branch ${{ github.ref_name }} \
           --release-type ${{ inputs.release-type }} \
-          --extra-files "${{ inputs.extra-files }}" \
+          --extra-files ${{ inputs.extra-files }} \
           --release-as ${{ steps.get-next-version.outputs.version }}
 
     - name: 🚀 Create GitHub release
@@ -109,7 +116,8 @@ runs:
       if: steps.is-release-pr.outputs.result == 'yes'
       shell: bash
       run: |
-        npx release-please@16 github-release \
+        cd release-please
+        node build/src/bin/release-please.js github-release \
           --token ${{ steps.generate_token.outputs.token }} \
           --repo-url ${{ github.repositoryUrl }} \
           --target-branch ${{ github.ref_name }} \
