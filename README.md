@@ -35,7 +35,6 @@ jobs:
         with:
           create-major-minor-tags: true
           prerelease: ${{ github.ref_name == 'dev' }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
           github-app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
           github-app-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
           github-app-name: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
