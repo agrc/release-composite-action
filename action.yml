@@ -50,6 +50,13 @@ runs:
         app-id: ${{ inputs.github-app-id }}
         private-key: ${{ inputs.github-app-key }}
 
+    - name: 🎭 Mock Convert token
+      if: ${{ env.ACT }}
+      id: generate_token
+      shell: bash
+      run: |
+        echo "token=${{ env.TEST_TOKEN }}" >> $GITHUB_OUTPUT
+
     - name: ⬇️ Set up code
       uses: actions/checkout@v4
       with:
@@ -71,11 +78,19 @@ runs:
         fi
 
     - name: ⏩ Get next version
+      if: ${{ !env.ACT }}
       id: get-next-version
       uses: agrc/get-next-version-action@v1
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
+
+    - name: 🎭 Mock Get next version
+      if: ${{ env.ACT }}
+      id: get-next-version
+      shell: bash
+      run: |
+        echo "version=9.9.9" >> $GITHUB_OUTPUT
 
     - name: 🚀 Create release PR
       id: create-release-pr
