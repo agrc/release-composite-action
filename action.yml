@@ -45,14 +45,14 @@ runs:
     - name: 🪙 Convert token
       if: ${{ !env.ACT }}
       uses: actions/create-github-app-token@v1
-      id: generate_token
+      id: generate-token
       with:
         app-id: ${{ inputs.github-app-id }}
         private-key: ${{ inputs.github-app-key }}
 
     - name: 🎭 Mock Convert token
       if: ${{ env.ACT }}
-      id: generate_token
+      id: mock-generate-token
       shell: bash
       run: |
         echo "token=${{ env.TEST_TOKEN }}" >> $GITHUB_OUTPUT
@@ -61,7 +61,7 @@ runs:
       uses: actions/checkout@v4
       with:
         show-progress: false
-        token: ${{ steps.generate_token.outputs.token }}
+        token: ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }}
 
     - name: 🤔 Is this a release PR merge
       id: is-release-pr
@@ -86,7 +86,7 @@ runs:
 
     - name: 🎭 Mock Get next version
       if: ${{ env.ACT }}
-      id: get-next-version
+      id: mock-get-next-version
       shell: bash
       run: |
         echo "version=9.9.9" >> $GITHUB_OUTPUT
@@ -96,16 +96,18 @@ runs:
       if: steps.is-release-pr.outputs.result == 'no'
       shell: bash
       run: |
+        echo "token: ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }}"
+        echo "version: ${{ steps.get-next-version.outputs.version || steps.mock-get-next-version.outputs.version }}"
         npx release-please@16 release-pr \
           --pull-request-title-pattern "chore: release v\${version}" \
           --pull-request-header " " \
           --changelog-sections "feat,fix,deps,docs,style" \
-          --token ${{ steps.generate_token.outputs.token }} \
-          --repo-url ${{ github.repositoryUrl }} \
+          --token ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }} \
+          --repo-url ${{ github.repositoryUrl || 'https://github.com/agrc/release-composite-action' }} \
           --target-branch ${{ github.ref_name }} \
           --release-type ${{ inputs.release-type }} \
           --extra-files "${{ inputs.extra-files }}" \
-          --release-as ${{ steps.get-next-version.outputs.version }}
+          --release-as ${{ steps.get-next-version.outputs.version || steps.mock-get-next-version.outputs.version }}
 
     - name: 🚀 Create GitHub release
       id: create-github-release
@@ -113,8 +115,8 @@ runs:
       shell: bash
       run: |
         npx release-please@16 github-release \
-          --token ${{ steps.generate_token.outputs.token }} \
-          --repo-url ${{ github.repositoryUrl }} \
+          --token ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }} \
+          --repo-url ${{ github.repositoryUrl || 'https://github.com/agrc/release-composite-action' }} \
           --target-branch ${{ github.ref_name }} \
           --prerelease ${{ inputs.prerelease }} \
           --release-type ${{ inputs.release-type }}
