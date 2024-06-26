@@ -10,7 +10,7 @@ inputs:
     required: false
     default: ${{ github.ref_name == 'dev' }}
   repo-token:
-    description: GitHub token (e.g. secrets.GITHUB_TOKEN)
+    description: GitHub token (e.g. secrets.GITHUB_TOKEN). This repo-specific token is required so that we can get the owner and repo name.
     required: true
   github-app-id:
     description: Installed GitHub App Id (e.g. secrets.UGRC_RELEASE_BOT_APP_ID)
