@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.1-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.2.1-0) (2024-06-26)
+
+
+### Bug Fixes
+
+* fix duplicate step ids ([29605a9](https://github.com/agrc/release-composite-action/commit/29605a90d88e80a13a864bf3c5e4c5746cc60df5))
+* remove header ([e616ebf](https://github.com/agrc/release-composite-action/commit/e616ebfb592c81f17c6142ad80e0320448fe7e4a))
+* switch to forked version of release-please ([0633e59](https://github.com/agrc/release-composite-action/commit/0633e59cf24fe431ae202a39ec78d2bf9ef70bcc))
+* switch to release please cli rather than action ([7d288ef](https://github.com/agrc/release-composite-action/commit/7d288efb73cb48335f2b852c04c125adf0367c0b)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+
+
+### Documentation
+
+* better concurrency group example ([232cae2](https://github.com/agrc/release-composite-action/commit/232cae2c7881e4e9b896f114d068dad825cb1e9b))
+* clarify why we need the repo-token input ([20c2468](https://github.com/agrc/release-composite-action/commit/20c24683b8aecd6778a962f5d039e60e410d1e7c))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
