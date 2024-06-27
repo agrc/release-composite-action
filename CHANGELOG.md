@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.1-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.2.1-0) (2024-06-27)
+
+
+### Bug Fixes
+
+* fix duplicate step ids ([29605a9](https://github.com/agrc/release-composite-action/commit/29605a90d88e80a13a864bf3c5e4c5746cc60df5))
+* remove header ([e616ebf](https://github.com/agrc/release-composite-action/commit/e616ebfb592c81f17c6142ad80e0320448fe7e4a))
+* switch to forked version of release-please ([0633e59](https://github.com/agrc/release-composite-action/commit/0633e59cf24fe431ae202a39ec78d2bf9ef70bcc))
+* switch to release please cli rather than action ([7d288ef](https://github.com/agrc/release-composite-action/commit/7d288efb73cb48335f2b852c04c125adf0367c0b)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+* upgrade to release please action v4 config file requirements ([69db3de](https://github.com/agrc/release-composite-action/commit/69db3de69c17627d0bab16b53a0688fa75055358)), closes [#48](https://github.com/agrc/release-composite-action/issues/48)
+* use ugrc release bot for release config commit ([db9daa7](https://github.com/agrc/release-composite-action/commit/db9daa75eab4f11669ba10a7ebcf5fada46ce581))
+
+
+### Documentation
+
+* better concurrency group example ([232cae2](https://github.com/agrc/release-composite-action/commit/232cae2c7881e4e9b896f114d068dad825cb1e9b))
+* better concurrency group example ([2b0626a](https://github.com/agrc/release-composite-action/commit/2b0626aaef5e0efd4b9a695db8d8c06d708b7669))
+* clarify why we need the repo-token input ([20c2468](https://github.com/agrc/release-composite-action/commit/20c24683b8aecd6778a962f5d039e60e410d1e7c))
+
 ## [1.2.0](https://github.com/agrc/release-composite-action/compare/v1.1.7...v1.2.0) (2023-02-27)
 
 
