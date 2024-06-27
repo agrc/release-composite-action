@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1-1](https://github.com/agrc/release-composite-action/compare/v1.2.1-0...v1.2.1-1) (2024-06-27)
+
+
+### Bug Fixes
+
+* get major/minor values from get-next-version ([4c6252b](https://github.com/agrc/release-composite-action/commit/4c6252b7e6d67067ed57a3e9e64c02bcc416425f))
+
 ## [1.2.1-0](https://github.com/agrc/release-composite-action/compare/v1.2.0...v1.2.1-0) (2024-06-27)
 
 
