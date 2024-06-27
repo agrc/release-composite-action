@@ -89,7 +89,9 @@ runs:
       id: mock-get-next-version
       shell: bash
       run: |
-        echo "version=9.9.9" >> $GITHUB_OUTPUT
+        echo "version=999.99.9" >> $GITHUB_OUTPUT
+        echo "major=999" >> $GITHUB_OUTPUT
+        echo "minor=99" >> $GITHUB_OUTPUT
 
     - name: 📦 Setup Node.js
       uses: actions/setup-node@v4
@@ -145,13 +147,17 @@ runs:
       shell: bash
       if: ${{ inputs.create-major-minor-tags == 'true' && steps.is-release-pr.outputs.result == 'yes' && inputs.prerelease != 'true' }}
       run: |
+        major="${{ steps.get-next-version.outputs.major || steps.mock-get-next-version.outputs.major }}"
+        minor="${{ steps.get-next-version.outputs.minor || steps.mock-get-next-version.outputs.minor }}"
+        echo "major=$major"
+        echo "minor=$minor"
         echo "deleting existing tags, if any"
-        git tag -d v${{ steps.release-please.outputs.major }} || true
-        git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
-        git push origin :v${{ steps.release-please.outputs.major }} || true
-        git push origin :v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
+        git tag -d v$major || true
+        git tag -d v$major.$minor || true
+        git push origin :v$major || true
+        git push origin :v$major.$minor || true
         echo "creating new tags"
-        git tag -a v${{ steps.release-please.outputs.major }} -m "Release v${{ steps.release-please.outputs.major }}"
-        git tag -a v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} -m "Release v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}"
-        git push origin v${{ steps.release-please.outputs.major }}
-        git push origin v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}
+        git tag -a v$major -m "Release v$major"
+        git tag -a v$major.$minor -m "Release v$major.$minor"
+        git push origin v$major
+        git push origin v$major.$minor
