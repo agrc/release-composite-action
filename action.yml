@@ -101,7 +101,7 @@ runs:
       run: |
         git clone https://github.com/stdavis/release-please
         cd release-please
-        git switch fix/merged-pr-searching
+        git switch stable-fix
         echo "installing dependencies"
         npm install
 
