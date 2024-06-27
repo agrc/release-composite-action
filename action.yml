@@ -50,7 +50,7 @@ runs:
         app-id: ${{ inputs.github-app-id }}
         private-key: ${{ inputs.github-app-key }}
 
-    - name: 🎭 Mock Convert token
+    - name: 🎭 Mock convert token
       if: ${{ env.ACT }}
       id: mock-generate-token
       shell: bash
@@ -84,7 +84,7 @@ runs:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
 
-    - name: 🎭 Mock Get next version
+    - name: 🎭 Mock get next version
       if: ${{ env.ACT }}
       id: mock-get-next-version
       shell: bash
@@ -140,23 +140,6 @@ runs:
       run: |
         git config user.name "${{ inputs.github-app-name }}"
         git config user.email "${{ inputs.github-app-email }}"
-
-    - name: ✔ Commit
-      shell: bash
-      run: |
-        git add .release-please-manifest.json
-        git add release-please-config.json
-        git diff --staged --quiet || git commit -m "chore: configure release please [skip ci]"
-        git push
-
-    - name: 🚀 Create release
-      uses: google-github-actions/release-please-action@v4
-      id: release-please
-      with:
-        token: ${{ steps.generate_token.outputs.token }}
-        config-file: release-please-config.json
-        manifest-file: .release-please-manifest.json
-        target-branch: ${{ github.ref_name }}
 
     - name: 🏷️ Tag major and minor versions
       shell: bash
