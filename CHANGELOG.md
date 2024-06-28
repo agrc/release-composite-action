@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/release-composite-action/compare/v1.2.1...v1.3.0) (2024-06-28)
+
+
+### Features
+
+* add release notifications ([eb50d22](https://github.com/agrc/release-composite-action/commit/eb50d22d72cad948cf513391cde1db72bff671b4)), closes [#78](https://github.com/agrc/release-composite-action/issues/78)
+
 ## [1.2.1](https://github.com/agrc/release-composite-action/compare/v1.2.1-0...v1.2.1) (2024-06-27)
 
 
