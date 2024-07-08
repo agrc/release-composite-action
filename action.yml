@@ -68,7 +68,12 @@ runs:
       shell: bash
       run: |
         latest_commit_message=$(git log -1 --pretty=format:%s)
-        if [[ $latest_commit_message == "chore: release v"* ]]; then
+        if [[ ${{ inputs.prerelease }} ]]; then
+          pattern="chore: release v[0-9]\+\.[0-9]\+\.[0-9]\+-[0-9]\+$"
+        else
+          pattern="chore: release v[0-9]\+\.[0-9]\+\.[0-9]\+$"
+        fi
+        if echo $latest_commit_message | grep -q "$pattern"; then
           echo "this workflow was triggered by a release PR"
           echo "result=yes" >> $GITHUB_OUTPUT
         else
