@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.2-0](https://github.com/agrc/release-composite-action/compare/v1.2.1...v1.2.2-0) (2024-07-08)
+
+
+### Features
+
+* add release notifications ([eb50d22](https://github.com/agrc/release-composite-action/commit/eb50d22d72cad948cf513391cde1db72bff671b4)), closes [#78](https://github.com/agrc/release-composite-action/issues/78)
+
+
+### Bug Fixes
+
+* only define release_created output if it is true ([c8deb73](https://github.com/agrc/release-composite-action/commit/c8deb738831b38a87a7f879118e46e541847a669))
+
 ## [1.2.1](https://github.com/agrc/release-composite-action/compare/v1.2.1-0...v1.2.1) (2024-06-27)
 
 
