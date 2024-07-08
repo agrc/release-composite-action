@@ -68,7 +68,7 @@ runs:
       shell: bash
       run: |
         latest_commit_message=$(git log -1 --pretty=format:%s)
-        if [[ ${{ inputs.prerelease }} ]]; then
+        if [[ "${{ inputs.prerelease }}" == "true" ]]; then
           pattern="chore: release v[0-9]\+\.[0-9]\+\.[0-9]\+-[0-9]\+$"
         else
           pattern="chore: release v[0-9]\+\.[0-9]\+\.[0-9]\+$"
