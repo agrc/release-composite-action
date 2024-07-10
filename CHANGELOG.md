@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
+
+
+### Dependencies
+
+* bump action to remove node warning ([e5a5de3](https://github.com/agrc/release-composite-action/commit/e5a5de37310174f754ebf7af0194f600cba962e4))
+
 ## [1.2.3](https://github.com/agrc/release-composite-action/compare/v1.2.2...v1.2.3) (2024-07-10)
 
 
