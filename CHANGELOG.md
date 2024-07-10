@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3-0](https://github.com/agrc/release-composite-action/compare/v1.2.2...v1.2.3-0) (2024-07-10)
+
+
+### Bug Fixes
+
+* better logic for determining if the run was triggered by a release pr ([8193c5c](https://github.com/agrc/release-composite-action/commit/8193c5cfeac3806051e528da51e64d6c67cd5791))
+
 ## [1.2.2](https://github.com/agrc/release-composite-action/compare/v1.2.1...v1.2.2) (2024-07-08)
 
 
