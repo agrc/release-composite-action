@@ -2,11 +2,12 @@
 
 [![Push Events](https://github.com/agrc/release-composite-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/release-composite-action/actions/workflows/push.yml)
 
-Automated releases based on the [Angular preset for Conventional Commits](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
+This action is a wrapper around Google's [release-please](https://github.com/googleapis/release-please) that adds some UGRC-specific conventions and enhancements.
 
 ## Usage
 
 ```yml
+# push.yml
 name: Push Events
 
 on:
@@ -14,12 +15,6 @@ on:
     branches:
       - dev
       - main
-
-permissions:
-  contents: write
-  id-token: write
-  deployments: write
-  pull-requests: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -29,6 +24,9 @@ jobs:
   release:
     name: Create release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - uses: agrc/release-composite-action@v1
@@ -41,6 +39,18 @@ jobs:
           github-app-name: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
           github-app-email: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
 ```
+
+## How should I write my commits?
+
+Release please auto-generates a changelog based on commits using the [Angular preset for Conventional Commits](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
+
+The following commit message prefixes are supported. "*" denotes that the prefix triggers a build. Everything but `feat` will be considered a patch release.
+
+- `feat`*: A new feature
+- `fix`*: A bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- `deps`*: A dependency update
 
 ## Development
 
