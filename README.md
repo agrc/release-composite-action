@@ -77,17 +77,23 @@ The following commit message types are supported but will not trigger a release 
 
 ### Scope
 
-Scopes are a way of separating out the different parts of your project creating separate release pipelines for each of them. They are optional and should be in parentheses. For example:
+Scopes are a way to add context to the commits and therefore the changelog. They are optional and should be in parentheses. For example:
 
 ```text
-feat(core): add a new feature
+feat(app): add a new feature
 ```
 
-Release please will use the scope to group releases and commits in the changelog. You may need a [manifest file](https://github.com/agrc/api.mapserv.utah.gov/blob/main/.release-please-manifest.json).
+This commit message would show up like this in the changelog:
+
+```markdown
+### Features
+
+- **app:** add a new feature
+```
 
 ### Summary
 
-Commit summaries should be written using imperative, present tense ("fix" not "fixed" or "fixes"), sentence case (capitalize the first word), and should not end with a period. These are generally what show up in the changelog.
+Commit summaries should be written using imperative, present tense ("fix" not "fixed" or "fixes"), lowercase (do not capitalize the first word or use punctuation). These are what show up in the changelog.
 
 For example:
 
@@ -101,14 +107,22 @@ Continue to use imperative, present tense. The body should include a more detail
 
 ### Footer
 
-The footer should contain any references to GitHub issues: `Fixes #1234`, `Resolves #1234`, etc. This will automatically close the issue when the commit is merged. It may also include information about a breaking change (see below).
+The footer should contain any references to GitHub issues: `closes #1234`, `refs #1234`, etc. `closes` will automatically close the issue when the commit is merged and `refs` will add a link to the commit in the referenced issue or pull request. The footer may also include information about a breaking change (see below).
+
+> [!NOTE]
+> The body is not required to use the footer.
 
 ### Breaking Changes
 
-If a commit introduces a breaking change, add a "!" after the type. This will trigger a major version bump. You should also add a `BREAKING CHANGE:` section to the commit body.
+If a commit introduces a breaking change, add a `!` after the type. This will trigger a major version bump.
+
+> [!IMPORTANT]
+> A `BREAKING CHANGE:` section to the commit footer.
 
 ```text
 feat!: add a new feature
+
+Some detailed description that will now show up in the changelog.
 
 BREAKING CHANGE: <summary of breaking change>
 <breaking change description and migration instructions>
