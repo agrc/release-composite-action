@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5-0](https://github.com/agrc/release-composite-action/compare/v1.2.4...v1.2.5-0) (2024-08-14)
+
+
+### Documentation
+
+* add usage details about writing commits ([6fdd92c](https://github.com/agrc/release-composite-action/commit/6fdd92c03c3bf30b3c667882006eba53dc3a9440))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
