@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.3.0-0](https://github.com/agrc/release-composite-action/compare/v1.2.4...v1.3.0-0) (2024-08-14)
+
+
+### Features
+
+* test feat update ([6ec9822](https://github.com/agrc/release-composite-action/commit/6ec9822c91d5d3bb01ed4a4030190b06e7050233))
+
+
+### Bug Fixes
+
+* empty commit for triggering a release ([cfbfa37](https://github.com/agrc/release-composite-action/commit/cfbfa3758b0c2e7f818400ac848c149d6a19b468))
+
+
+### Dependencies
+
+* test deps update ([95a40b5](https://github.com/agrc/release-composite-action/commit/95a40b57529e9280d081b547d8abcb5bb1663985))
+
+
+### Documentation
+
+* test docs update ([13f0120](https://github.com/agrc/release-composite-action/commit/13f01208162f23b404c7efc1241d27ac5beca55e))
+
+
+### Styles
+
+* test style update ([6e41eec](https://github.com/agrc/release-composite-action/commit/6e41eece21be5743393e0ccbbbf47610085ab0c4))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
