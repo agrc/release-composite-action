@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0-0](https://github.com/agrc/release-composite-action/compare/v1.2.4...v2.0.0-0) (2024-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* summary of breaking change
+
+### Bug Fixes
+
+* test breaking fix ([abe7457](https://github.com/agrc/release-composite-action/commit/abe74577e60d4a3aab1c50d0f4dc86645dc0b27a))
+
+
+### Documentation
+
+* add usage details about writing commits ([483d22f](https://github.com/agrc/release-composite-action/commit/483d22fd4cfcd349f8715acacf00681a10b72568))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
