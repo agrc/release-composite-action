@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.0.0-0](https://github.com/agrc/release-composite-action/compare/v1.2.4...v2.0.0-0) (2024-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* summary of breaking change
+    - breaking change description
+    - migration instructions
+    - etc
+
+### Bug Fixes
+
+* add missing constructor parameter ([5b757c3](https://github.com/agrc/release-composite-action/commit/5b757c31c4bb2e04efb19c6de1dacd0689bcbe72))
+
+
+### Documentation
+
+* add usage details about writing commits ([6fdd92c](https://github.com/agrc/release-composite-action/commit/6fdd92c03c3bf30b3c667882006eba53dc3a9440))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
