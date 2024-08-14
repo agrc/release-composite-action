@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5-0](https://github.com/agrc/release-composite-action/compare/v1.2.4...v1.2.5-0) (2024-08-14)
+
+
+### Styles
+
+* test style update ([cb81124](https://github.com/agrc/release-composite-action/commit/cb8112475fc15b2f7dfe1243a40f38b5be8b3086))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
