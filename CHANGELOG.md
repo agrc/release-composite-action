@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5-0](https://github.com/agrc/release-composite-action/compare/v1.2.4...v1.2.5-0) (2024-08-14)
+
+
+### Documentation
+
+* test docs update ([3402c32](https://github.com/agrc/release-composite-action/commit/3402c329f2e256d1eaa98680f33dbf96cbe7a8c6))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
