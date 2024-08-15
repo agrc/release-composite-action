@@ -96,7 +96,7 @@ runs:
     - name: ⏩ Get next version
       if: ${{ !env.ACT }}
       id: get-next-version
-      uses: agrc/get-next-version-action@v1
+      uses: agrc/get-next-version-action@dev
       with:
         prerelease: ${{ inputs.prerelease }}
         repo-token: ${{ inputs.repo-token }}
