@@ -156,6 +156,17 @@ The above commit would show up in the changelog like this:
 
 You may dig into the [release-please](https://github.com/googleapis/release-please#how-should-i-write-my-commits) and the [Angular preset](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit-message-footer) documentation for more information.
 
+### Forcing a Specific Version
+
+This action's use of release-please does not support their [method for forcing a specific release version](https://github.com/googleapis/release-please#how-do-i-change-the-version-number) due to our use of [agrc/get-next-version-action](https://github.com/agrc/get-next-version-action). However, you can achieve the same results by manually updating an open release PR. Here are the things that you need to change to match the desired version:
+
+- PR Title
+- Changelog within PR description
+- Update any files changed with a new commit
+- Fixup the newly created commit into the original release commit and reword the commit summary
+
+Once the above changes have been completed, you may merge the PR and the release should be created using the new version number.
+
 ## Development
 
 ### Act Test Runner
