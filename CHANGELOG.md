@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.5](https://github.com/agrc/release-composite-action/compare/v1.2.4...v1.2.5) (2024-09-26)
+
+
+### Bug Fixes
+
+* pin release-please to a major version ([4de60c4](https://github.com/agrc/release-composite-action/commit/4de60c4226c66fbad85f76f3f6670a961992f070))
+* switch back to main release-please project ([bea89a5](https://github.com/agrc/release-composite-action/commit/bea89a559fb4d4dbb983bcec71849a33088dab30)), closes [#109](https://github.com/agrc/release-composite-action/issues/109)
+
+
+### Documentation
+
+* add note about forcing a specific version ([66a1c50](https://github.com/agrc/release-composite-action/commit/66a1c5072cd7a7665c89af27f00f7a9c66b87f21))
+* add usage details about writing commits ([37326ff](https://github.com/agrc/release-composite-action/commit/37326ff5dc0157576e2529f159f34f35c3657ccc))
+
 ## [1.2.4](https://github.com/agrc/release-composite-action/compare/v1.2.3...v1.2.4) (2024-07-10)
 
 
