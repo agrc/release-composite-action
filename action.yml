@@ -118,7 +118,7 @@ runs:
     - name: Set up Release Please
       shell: bash
       run: |
-        npm i release-please -g
+        npm install release-please@16.x -g
 
     - name: 🚀 Create release PR
       id: create-release-pr
