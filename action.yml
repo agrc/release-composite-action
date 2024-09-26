@@ -118,18 +118,14 @@ runs:
     - name: Set up Release Please
       shell: bash
       run: |
-        git clone https://github.com/stdavis/release-please
-        cd release-please
-        git switch stable-fix
-        echo "installing dependencies"
-        npm install
+        npm i release-please -g
 
     - name: 🚀 Create release PR
       id: create-release-pr
       if: ${{ steps.is-release-pr.outputs.result == 'no' }}
       shell: bash
       run: |
-        node release-please/build/src/bin/release-please.js release-pr \
+        release-please release-pr \
           --pull-request-title-pattern "chore: release v\${version}" \
           --pull-request-header " " \
           --changelog-sections "feat,fix,deps,docs,style" \
@@ -145,7 +141,7 @@ runs:
       if: ${{ steps.is-release-pr.outputs.result == 'yes' }}
       shell: bash
       run: |
-        node release-please/build/src/bin/release-please.js github-release \
+        release-please github-release \
           --token ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }} \
           --repo-url ${{ github.repositoryUrl || 'https://github.com/agrc/release-composite-action' }} \
           --target-branch ${{ github.ref_name }} \
