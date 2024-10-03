@@ -167,6 +167,23 @@ This action's use of release-please does not support their [method for forcing a
 
 Once the above changes have been completed, you may merge the PR and the release should be created using the new version number.
 
+### Extra Files
+
+Sometimes you have extra files in which you want the version number bumped. To achieve this, you pass them to the `extra-files` input. For example:
+
+```yml
+  with:
+    extra-files: path/to/file2
+```
+
+You also need to tag the version in the extra files with a special comment.
+
+```js
+{
+  "version": "1.2.3" // x-release-please-version
+}
+```
+
 ## Development
 
 ### Act Test Runner
