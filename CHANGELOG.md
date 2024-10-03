@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/agrc/release-composite-action/compare/v1.2.5...v1.2.6) (2024-10-03)
+
+
+### Documentation
+
+* add section about the extra files input ([dec71ea](https://github.com/agrc/release-composite-action/commit/dec71ea2a507061d9113655737da6a608f782495))
+
 ## [1.2.5](https://github.com/agrc/release-composite-action/compare/v1.2.4...v1.2.5) (2024-09-26)
 
 
