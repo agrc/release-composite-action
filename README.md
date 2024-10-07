@@ -173,7 +173,7 @@ Sometimes you have extra files in which you want the version number bumped. To a
 
 ```yml
   with:
-    extra-files: path/to/file2
+    extra-files: path/to/file2,another/path/to/file3
 ```
 
 You also need to tag the version in the extra files with a special comment.
