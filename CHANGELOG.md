@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/agrc/release-composite-action/compare/v1.2.6...v1.2.7) (2024-10-07)
+
+
+### Documentation
+
+* add multi-file example to extra-files ([3217c69](https://github.com/agrc/release-composite-action/commit/3217c690a4d4795a25d0ef87217f351a29a46337))
+
 ## [1.2.6](https://github.com/agrc/release-composite-action/compare/v1.2.5...v1.2.6) (2024-10-03)
 
 
