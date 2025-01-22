@@ -118,7 +118,7 @@ The footer should contain any references to GitHub issues: `closes #1234`, `refs
 
 ### Breaking Changes
 
-If a commit introduces a breaking change, add a `!` after the type. This will trigger a major version bump.
+If a commit introduces a breaking change, add a `!` after the type and optional scope. This will trigger a major version bump.
 
 > [!IMPORTANT]
 > A `BREAKING CHANGE: <summary of breaking change>` section is required in the commit footer.
@@ -153,6 +153,7 @@ The above commit would show up in the changelog like this:
 
 > [!NOTE]
 > This follow are available to use with breaking changes: `feat!`, `fix!`, or `refactor!`
+> They also work with scopes: `feat(scope)!`, `fix(scope)!`, or `refactor(scope)!`
 
 You may dig into the [release-please](https://github.com/googleapis/release-please#how-should-i-write-my-commits) and the [Angular preset](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit-message-footer) documentation for more information.
 
