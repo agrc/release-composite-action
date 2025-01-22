@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.8](https://github.com/agrc/release-composite-action/compare/v1.2.7...v1.2.8) (2025-01-22)
+
+
+### Documentation
+
+* update major with regard to scopes ([cf2b1f5](https://github.com/agrc/release-composite-action/commit/cf2b1f5d220902d0e0f064ec35477362522b3281))
+
 ## [1.2.7](https://github.com/agrc/release-composite-action/compare/v1.2.6...v1.2.7) (2024-10-07)
 
 
