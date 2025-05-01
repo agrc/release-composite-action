@@ -44,7 +44,7 @@ runs:
   steps:
     - name: 🪙 Convert token
       if: ${{ !env.ACT }}
-      uses: actions/create-github-app-token@v1
+      uses: actions/create-github-app-token@v2
       id: generate-token
       with:
         app-id: ${{ inputs.github-app-id }}
