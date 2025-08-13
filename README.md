@@ -185,6 +185,10 @@ You also need to tag the version in the extra files with a special comment.
 }
 ```
 
+### Initial Release
+
+The initial release for a project should default to `v1.0.0` if the current version is less a major 1.
+
 ## Development
 
 ### Act Test Runner
