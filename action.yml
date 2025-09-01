@@ -58,7 +58,7 @@ runs:
         echo "token=${{ env.TEST_TOKEN }}" >> $GITHUB_OUTPUT
 
     - name: ⬇️ Set up code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         show-progress: false
         token: ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }}
