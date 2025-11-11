@@ -58,14 +58,14 @@ runs:
         echo "token=${{ env.TEST_TOKEN }}" >> $GITHUB_OUTPUT
 
     - name: ⬇️ Set up code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         show-progress: false
         token: ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }}
 
     - name: 🤔 Is this a release PR merge
       id: is-release-pr
-      uses: actions/github-script@v7
+      uses: actions/github-script@v8
       with:
         result-encoding: string
         retries: 3
@@ -111,7 +111,7 @@ runs:
         echo "minor=99" >> $GITHUB_OUTPUT
 
     - name: 📦 Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: lts/*
 
