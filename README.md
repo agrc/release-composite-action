@@ -163,8 +163,11 @@ This action's use of release-please does not support their [method for forcing a
 
 - PR Title
 - Changelog within PR description
-- Update any files changed with a new commit
-- Fixup the newly created commit into the original release commit and reword the commit summary
+- Update the commit
+  - Checkout the branch locally and modify the necessary files
+  - Stage your edits
+  - Amend the release commit: `git commit --amend -m "chore: release v<new.version.number>"` (or leave off -m and it'll open your editor to change the message)
+  - Force push your changes back to GitHub
 
 Once the above changes have been completed, you may merge the PR and the release should be created using the new version number.
 
