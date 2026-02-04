@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.9](https://github.com/agrc/release-composite-action/compare/v1.2.8...v1.2.9) (2026-02-04)
+
+
+### Documentation
+
+* update readme for forcing specific version ([9baed60](https://github.com/agrc/release-composite-action/commit/9baed60876a1e0cc32f6d0cdd920ffa2ff7e0335))
+
 ## [1.2.8](https://github.com/agrc/release-composite-action/compare/v1.2.7...v1.2.8) (2025-01-22)
 
 
