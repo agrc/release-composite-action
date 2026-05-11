@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.10-rc.1](https://github.com/agrc/release-composite-action/compare/v1.2.9...v1.2.10-rc.1) (2026-05-11)
+
+
+### Dependencies
+
+* release-please v16 -&gt; v17 ([ee49de0](https://github.com/agrc/release-composite-action/commit/ee49de0539a00793124735b6f486a2cbf0032598))
+
+
+### Documentation
+
+* add release action prerequisites to README ([e90aacb](https://github.com/agrc/release-composite-action/commit/e90aacbf9a010fdc9e2fef69d02a7a783234bdf2))
+
 ## [1.2.9](https://github.com/agrc/release-composite-action/compare/v1.2.8...v1.2.9) (2026-02-04)
 
 
