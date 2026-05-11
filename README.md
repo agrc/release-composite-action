@@ -6,6 +6,13 @@ This action is a wrapper around Google's [release-please](https://github.com/goo
 
 ## Usage
 
+### Prerequisites
+
+- Node projects must have a `package.json` file in the `main` branch.
+- The following labels must already exist in the repository:
+  - `autorelease: tagged`
+  - `autorelease: pending`
+
 ```yml
 # push.yml
 name: Push Events
