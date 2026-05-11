@@ -47,7 +47,7 @@ runs:
       uses: actions/create-github-app-token@v3
       id: generate-token
       with:
-        app-id: ${{ inputs.github-app-id }}
+        client-id: ${{ inputs.github-app-id }}
         private-key: ${{ inputs.github-app-key }}
 
     - name: 🎭 Mock convert token
