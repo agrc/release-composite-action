@@ -44,7 +44,7 @@ runs:
   steps:
     - name: 🪙 Convert token
       if: ${{ !env.ACT }}
-      uses: actions/create-github-app-token@v2
+      uses: actions/create-github-app-token@v3
       id: generate-token
       with:
         app-id: ${{ inputs.github-app-id }}
@@ -65,7 +65,7 @@ runs:
 
     - name: 🤔 Is this a release PR merge
       id: is-release-pr
-      uses: actions/github-script@v8
+      uses: actions/github-script@v9
       with:
         result-encoding: string
         retries: 3
