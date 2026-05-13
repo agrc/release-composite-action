@@ -65,13 +65,13 @@ This action uses release-please to auto-generates a changelog based on commits u
 
 The following commit message types trigger new releases.
 
-| Type | Description | Release Type | Changelog Section |
-| -- | -- | -- | -- |
-| `feat` | A new feature | Minor | Features |
-| `fix` | A bug fix | Patch | Bug Fixes |
-| `docs` | Documentation updates | Patch | Documentation |
-| `style` | Changes to the appearance of the project/UI | Patch | Styles |
-| `deps` | A dependency update. Dependabot should [be configured](https://github.com/agrc/release-composite-action/blob/6bdccbb5a1f882e756a3e6e09a3b3f699c55bfd4/.github/dependabot.yml#L12-L14) to use this prefix. | Patch | Dependencies |
+| Type    | Description                                                                                                                                                                                               | Release Type | Changelog Section |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------------- |
+| `feat`  | A new feature                                                                                                                                                                                             | Minor        | Features          |
+| `fix`   | A bug fix                                                                                                                                                                                                 | Patch        | Bug Fixes         |
+| `docs`  | Documentation updates                                                                                                                                                                                     | Patch        | Documentation     |
+| `style` | Changes to the appearance of the project/UI                                                                                                                                                               | Patch        | Styles            |
+| `deps`  | A dependency update. Dependabot should [be configured](https://github.com/agrc/release-composite-action/blob/6bdccbb5a1f882e756a3e6e09a3b3f699c55bfd4/.github/dependabot.yml#L12-L14) to use this prefix. | Patch        | Dependencies      |
 
 The following commit message types are supported but will not trigger a release or show up in the changelog.
 | Type | Description |
@@ -148,14 +148,14 @@ The above commit would show up in the changelog like this:
 ```markdown
 ### ⚠ BREAKING CHANGES
 
-* summary of breaking change
-    - breaking change description
-    - migration instructions
-    - etc
+- summary of breaking change
+  - breaking change description
+  - migration instructions
+  - etc
 
 ### Bug Fixes
 
-* add missing constructor parameter ([5b757c3](https://github.com/agrc/release-composite-action/commit/5b757c31c4bb2e04efb19c6de1dacd0689bcbe72))
+- add missing constructor parameter ([5b757c3](https://github.com/agrc/release-composite-action/commit/5b757c31c4bb2e04efb19c6de1dacd0689bcbe72))
 ```
 
 > [!NOTE]
@@ -183,8 +183,8 @@ Once the above changes have been completed, you may merge the PR and the release
 Sometimes you have extra files in which you want the version number bumped. To achieve this, you pass them to the `extra-files` input. For example:
 
 ```yml
-  with:
-    extra-files: path/to/file2,another/path/to/file3
+with:
+  extra-files: path/to/file2,another/path/to/file3
 ```
 
 You also need to tag the version in the extra files with a special comment.
@@ -214,3 +214,7 @@ An example of running the tests with act:
 ```sh
 act --env TEST_TOKEN="$(gh auth token)"
 ```
+
+### Dependency Updates
+
+Don't forget to bump the PNPM global install of `release-please` in `action.yml`. Release age exclude env var is for a specific version of uglify-js. Test and see if it's needed with newer versions of release-please and uglify-js.
