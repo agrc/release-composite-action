@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.10](https://github.com/agrc/release-composite-action/compare/v1.2.9...v1.2.10) (2026-05-13)
+
+
+### Bug Fixes
+
+* use a more secure method for installing release-please ([9ee8beb](https://github.com/agrc/release-composite-action/commit/9ee8bebe56c4ec7f0462e55311114f2dd5dc0d1f))
+
+
+### Dependencies
+
+* release-please v16 -&gt; v17 ([7fe18dd](https://github.com/agrc/release-composite-action/commit/7fe18dd04030bd5700308cfda178549f7bdd38f6))
+
+
+### Documentation
+
+* add release action prerequisites to README ([e90aacb](https://github.com/agrc/release-composite-action/commit/e90aacbf9a010fdc9e2fef69d02a7a783234bdf2))
+
 ## [1.2.10-rc.1](https://github.com/agrc/release-composite-action/compare/v1.2.9...v1.2.10-rc.1) (2026-05-11)
 
 
