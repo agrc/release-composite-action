@@ -217,4 +217,4 @@ act --env TEST_TOKEN="$(gh auth token)"
 
 ### Dependency Updates
 
-Don't forget to bump the PNPM global install of `release-please` in `action.yml`. Release age exclude env var is for a specific version of uglify-js. Test and see if it's needed with newer versions of release-please and uglify-js.
+Don't forget to bump the `pnpm dlx release-please@...` version in `action.yml`. Release age exclude env var is for a specific version of uglify-js. Test and see if it's needed with newer versions of release-please and uglify-js.
