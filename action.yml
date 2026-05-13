@@ -115,17 +115,23 @@ runs:
       with:
         node-version: lts/*
 
-    - name: Set up Release Please
+    - name: 📦 Setup PNPM
+      uses: pnpm/action-setup@v6
+      with:
+        version: 11
+
+    - name: ⚙️ Set up PNPM config
       shell: bash
       run: |
-        npm install release-please@17.x -g
+        # 7-day quarantine
+        echo "PNPM_CONFIG_MINIMUM_RELEASE_AGE=10080" >> "$GITHUB_ENV"
 
     - name: 🚀 Create release PR
       id: create-release-pr
       if: ${{ steps.is-release-pr.outputs.result == 'no' }}
       shell: bash
       run: |
-        release-please release-pr \
+        pnpm dlx release-please@17 release-pr \
           --pull-request-title-pattern "chore: release v\${version}" \
           --pull-request-header " " \
           --changelog-sections "feat,fix,deps,docs,style" \
@@ -141,7 +147,7 @@ runs:
       if: ${{ steps.is-release-pr.outputs.result == 'yes' }}
       shell: bash
       run: |
-        release-please github-release \
+        pnpm dlx release-please@17 github-release \
           --token ${{ steps.generate-token.outputs.token || steps.mock-generate-token.outputs.token }} \
           --repo-url ${{ github.repositoryUrl || 'https://github.com/agrc/release-composite-action' }} \
           --target-branch ${{ github.ref_name }} \
