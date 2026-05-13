@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.10-rc.2](https://github.com/agrc/release-composite-action/compare/v1.2.10-rc.1...v1.2.10-rc.2) (2026-05-13)
+
+
+### Bug Fixes
+
+* use a more secure method for installing release-please ([8e800e0](https://github.com/agrc/release-composite-action/commit/8e800e033267d11e14e7c62b48519675e0e8de24))
+
 ## [1.2.10-rc.1](https://github.com/agrc/release-composite-action/compare/v1.2.9...v1.2.10-rc.1) (2026-05-11)
 
 
