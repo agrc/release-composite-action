@@ -118,7 +118,7 @@ runs:
     - name: 📦 Setup PNPM
       uses: pnpm/action-setup@v6
       with:
-        version: 11
+        version: 11.10
 
     - name: ⚙️ Set up PNPM config
       shell: bash
