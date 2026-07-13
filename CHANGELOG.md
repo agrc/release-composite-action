@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.11](https://github.com/agrc/release-composite-action/compare/v1.2.10...v1.2.11) (2026-07-13)
+
+
+### Bug Fixes
+
+* pin PNPM version due to install bug ([786a374](https://github.com/agrc/release-composite-action/commit/786a374889f6bc7245cd0c84a78bd9932f89f7ce))
+
 ## [1.2.10](https://github.com/agrc/release-composite-action/compare/v1.2.9...v1.2.10) (2026-05-13)
 
 
