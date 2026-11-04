@@ -211,6 +211,8 @@ You also need to tag the version in the extra files with a special comment.
 
 The initial release for a project should default to `v1.0.0` if the current version is less a major 1.
 
+## Development
+
 ### Act Test Runner
 
 If you are using rancher, make sure to set the following environment variable prior to running act:
