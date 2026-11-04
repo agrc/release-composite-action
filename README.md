@@ -47,6 +47,18 @@ jobs:
           github-app-email: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
 ```
 
+## Release Outputs and Tags
+
+`release_created` is `yes` after a published release is verified for the workflow
+commit. `released_version` is that release's version without the `v` prefix, not
+the version predicted when creating a release PR.
+
+With `create-major-minor-tags: true`, stable releases update both floating tags
+(for example, `v2` and `v2.0` for `v2.0.0`) to the published release commit in a
+single atomic push. Prereleases do not update floating tags. Repository tag rules
+must allow the release bot to update these tags; a rejected update fails the step
+without changing either remote floating tag.
+
 ## Commits
 
 Commits should have the following format:
@@ -200,6 +212,12 @@ You also need to tag the version in the extra files with a special comment.
 The initial release for a project should default to `v1.0.0` if the current version is less a major 1.
 
 ## Development
+
+Run the release metadata and local Git tag regression tests with:
+
+```sh
+node --test test/release.test.cjs
+```
 
 ### Act Test Runner
 
