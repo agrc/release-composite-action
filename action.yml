@@ -174,7 +174,7 @@ runs:
 
               const { data: commit } = await github.rest.repos.getCommit({
                 ...context.repo,
-                ref: `refs/tags/${release.tag_name}`,
+                ref: `tags/${release.tag_name}`,
               });
               if (commit.sha !== context.sha) {
                 continue;
