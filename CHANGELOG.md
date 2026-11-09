@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.13](https://github.com/agrc/release-composite-action/compare/v1.2.12...v1.2.13) (2026-11-09)
+
+
+### Bug Fixes
+
+* derive floating tags from the published release ([#144](https://github.com/agrc/release-composite-action/issues/144)) ([0ee28e0](https://github.com/agrc/release-composite-action/commit/0ee28e057f1913a7a4517c9aed7761fa39fecbe4))
+
 ## [1.2.12](https://github.com/agrc/release-composite-action/compare/v1.2.11...v1.2.12) (2026-07-17)
 
 
